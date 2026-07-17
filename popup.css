@@ -1,0 +1,146 @@
+/* ============================================================
+   STACKEDDAILY — Email Capture Popup
+   Dark navy (#0b1220) background + electric green (#00e676) accent
+   Reusable across every page. Include after style.css.
+   ============================================================ */
+
+.sd-popup-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(4,7,13,.72);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.25rem;
+  opacity:0;visibility:hidden;
+  transition:opacity .28s ease, visibility .28s ease;
+}
+.sd-popup-overlay.sd-popup-visible{
+  opacity:1;visibility:visible;
+}
+
+.sd-popup-card{
+  position:relative;
+  width:100%;max-width:440px;
+  background:#0b1220;
+  border:1px solid rgba(0,230,118,.25);
+  border-radius:20px;
+  padding:2.25rem 2rem 2rem;
+  box-shadow:0 24px 70px rgba(0,0,0,.55), 0 0 60px rgba(0,230,118,.12);
+  transform:translateY(18px) scale(.97);
+  transition:transform .32s cubic-bezier(0.16,1,0.3,1);
+  font-family:'Satoshi','Inter',sans-serif;
+  color:#edf0f7;
+}
+.sd-popup-overlay.sd-popup-visible .sd-popup-card{
+  transform:translateY(0) scale(1);
+}
+
+.sd-popup-close{
+  position:absolute;top:.9rem;right:.9rem;
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  color:#8b95ad;font-size:1rem;line-height:1;
+  cursor:pointer;transition:background .2s,color .2s,transform .2s;
+}
+.sd-popup-close:hover{
+  background:rgba(0,230,118,.12);
+  color:#00e676;
+  transform:rotate(90deg);
+}
+
+.sd-popup-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:rgba(0,230,118,.12);
+  border:1px solid rgba(0,230,118,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:1.25rem;
+}
+
+.sd-popup-eyebrow{
+  font-size:.7rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.14em;color:#00e676;margin-bottom:.6rem;
+}
+
+.sd-popup-title{
+  font-family:'Cabinet Grotesk','Helvetica Neue',sans-serif;
+  font-size:clamp(1.4rem,1.2rem + 1vw,1.85rem);
+  font-weight:900;letter-spacing:-.03em;
+  line-height:1.15;color:#ffffff;margin-bottom:.6rem;
+}
+
+.sd-popup-sub{
+  font-size:.95rem;color:#a7b0c4;line-height:1.55;
+  margin-bottom:1.5rem;
+}
+.sd-popup-sub strong{color:#00e676;font-weight:700;}
+
+.sd-popup-form{display:flex;flex-direction:column;gap:.75rem;}
+
+.sd-popup-input{
+  width:100%;padding:.9rem 1.1rem;
+  background:#0f1524;
+  border:1.5px solid #242c3f;
+  border-radius:10px;
+  font-size:.95rem;color:#edf0f7;
+  transition:border-color .2s,box-shadow .2s;
+}
+.sd-popup-input::placeholder{color:#505a72;}
+.sd-popup-input:focus{
+  outline:none;border-color:#00e676;
+  box-shadow:0 0 0 3px rgba(0,230,118,.15);
+}
+
+.sd-popup-btn{
+  width:100%;
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.95rem 1.25rem;
+  background:#00e676;color:#0b1220;
+  border:1.5px solid #00e676;
+  border-radius:10px;
+  font-family:'Cabinet Grotesk','Helvetica Neue',sans-serif;
+  font-size:.95rem;font-weight:800;
+  cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;
+}
+.sd-popup-btn:hover{
+  background:#00c853;border-color:#00c853;
+  transform:translateY(-1px);
+  box-shadow:0 0 28px rgba(0,230,118,.35);
+}
+.sd-popup-btn:active{transform:translateY(0);}
+
+.sd-popup-disclaimer{
+  font-size:.72rem;color:#505a72;text-align:center;
+  margin-top:.85rem;line-height:1.5;
+}
+
+/* Success state */
+.sd-popup-success{
+  display:none;flex-direction:column;align-items:center;text-align:center;
+  gap:.75rem;padding:1rem 0 .5rem;
+}
+.sd-popup-success.sd-show{display:flex;}
+.sd-popup-success-icon{font-size:2.5rem;}
+.sd-popup-success h3{
+  font-family:'Cabinet Grotesk','Helvetica Neue',sans-serif;
+  font-size:1.3rem;font-weight:900;color:#ffffff;
+}
+.sd-popup-success p{font-size:.9rem;color:#a7b0c4;max-width:32ch;}
+
+.sd-popup-form.sd-hide{display:none;}
+
+/* Mobile responsiveness */
+@media (max-width:480px){
+  .sd-popup-card{
+    padding:1.85rem 1.4rem 1.6rem;
+    border-radius:16px;
+  }
+  .sd-popup-title{font-size:1.35rem;}
+  .sd-popup-sub{font-size:.875rem;}
+  .sd-popup-icon{width:46px;height:46px;font-size:1.3rem;}
+}
+
+@media (max-height:640px){
+  .sd-popup-overlay{align-items:flex-end;padding-bottom:0;}
+  .sd-popup-card{border-radius:20px 20px 0 0;max-height:90vh;overflow-y:auto;}
+}

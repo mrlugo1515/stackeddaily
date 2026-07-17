@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Guides — AI Tools & Income Strategies | StackedDaily</title>
+  <meta name="description" content="Free, in-depth guides on AI tools, affiliate marketing, digital products, SEO, and building passive income online." />
+  <link rel="canonical" href="https://www.stackeddaily.org/blog" />
+  <meta property="og:title" content="Free Guides | StackedDaily" />
+  <meta property="og:description" content="Free, in-depth guides on AI tools, affiliate marketing, digital products, SEO, and building passive income online." />
+  <meta property="og:url" content="https://www.stackeddaily.org/blog" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"StackedDaily","url":"https://www.stackeddaily.org/blog","description":"Free guides on AI tools and side hustle income strategies."}</script>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .blog-hero { padding: 7rem 1.5rem 3rem; text-align:center; background: var(--surface); }
+    .blog-hero h1 { font-size: clamp(2rem,5vw,3.25rem); font-weight:900; margin-bottom:.75rem; }
+    .blog-hero p { color: var(--text-muted); font-size:1.1rem; max-width:560px; margin:0 auto 2rem; }
+    .blog-filters { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; }
+    .blog-filters button { padding:.45rem 1.1rem; border-radius:99px; border:1.5px solid var(--border); background:transparent; color:var(--text-muted); font-size:.85rem; font-family:inherit; cursor:pointer; transition:all .2s; }
+    .blog-filters button.active, .blog-filters button:hover { background:var(--green); color:#000; border-color:var(--green); font-weight:700; }
+    .blog-grid-section { padding: 3rem 1.5rem 6rem; }
+    .blog-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap:1.5rem; max-width:1200px; margin:0 auto; }
+    .blog-card { background:var(--surface); border:1px solid var(--border); border-radius:1rem; overflow:hidden; transition:transform .2s, box-shadow .2s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.25); }
+    .blog-card-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; }
+    .blog-card-chip { display:inline-block; padding:.25rem .75rem; border-radius:99px; font-size:.75rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.875rem; }
+    .blog-card h3 { font-size:1.1rem; font-weight:800; line-height:1.35; margin-bottom:.5rem; }
+    .blog-card h3 a { color:var(--text); text-decoration:none; }
+    .blog-card h3 a:hover { color:var(--green); }
+    .blog-card-excerpt { color:var(--text-muted); font-size:.9rem; line-height:1.6; flex:1; margin-bottom:1rem; }
+    .blog-card-meta { display:flex; justify-content:space-between; align-items:center; font-size:.8rem; color:var(--text-muted); padding-top:.875rem; border-top:1px solid var(--border); }
+    .blog-card-link { color:var(--green); font-weight:700; text-decoration:none; font-size:.875rem; }
+    .blog-card-link:hover { text-decoration:underline; }
+    .featured-card { grid-column: 1 / -1; display:grid; grid-template-columns:1fr 1fr; gap:0; }
+    @media(max-width:640px){ .featured-card { grid-template-columns:1fr; } }
+    .featured-card .blog-card-body { padding:2rem; justify-content:center; }
+    .featured-card h3 { font-size:1.4rem; }
+    .featured-tag { background:var(--green); color:#000; font-size:.7rem; font-weight:800; padding:.2rem .6rem; border-radius:4px; margin-left:.5rem; vertical-align:middle; }
+    .no-posts { display:none; text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1; }
+  </style>
+  <link rel="stylesheet" href="/popup.css" />
+</head>
+<body>
+  <div class="announce-bar" id="announce-bar">
+    <div class="announce-inner"><span class="announce-dot"></span><span>Free download: 90-Day AI Income Blueprint — <a href="/shop">Get it free →</a></span></div>
+    <button class="announce-close" onclick="document.getElementById('announce-bar').style.display='none'" aria-label="Close">✕</button>
+  </div>
+  <header class="header" id="header">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="StackedDaily Home">
+        <svg class="logo-icon" width="34" height="34" viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="9" fill="var(--green,#00e676)"/>
+          <rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/>
+          <rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/>
+          <rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/>
+          <circle cx="27" cy="24.5" r="4.5" fill="#0b0e14" stroke="white" stroke-width="1.5"/>
+          <path d="M25.5 24.5L26.7 25.7L28.5 23.5" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">StackedDaily</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/#tools">AI Tools</a>
+        <a href="/blog" class="active">Free Guides</a>
+        <a href="/shop">Shop</a>
+        <a href="/resources.html">Free Tools</a>
+        <a href="/#roadmap">Roadmap</a>
+        <a href="/#about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <a href="/shop" class="btn btn-primary nav-cta">Get Free Blueprint</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/#tools">AI Tools</a><a href="/blog">Free Guides</a>
+      <a href="/shop">Shop</a><a href="/resources.html">Free Tools</a><a href="/#about">About</a>
+      <a href="/shop" class="btn btn-primary">Get Free Blueprint →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <p class="eyebrow">Free Guides</p>
+      <h1>Learn. Build. Stack Income.</h1>
+      <p>In-depth guides on AI tools, affiliate marketing, digital products, and building real passive income — all free.</p>
+      <div class="blog-filters" id="filters">
+        <button class="active" data-filter="all">All Guides</button>
+        <button data-filter="AI Tools">AI Tools</button>
+        <button data-filter="Income">Income</button>
+        <button data-filter="Beginner">Beginner</button>
+        <button data-filter="SEO">SEO</button>
+        <button data-filter="Templates">Templates</button>
+      </div>
+    </section>
+
+    <section class="blog-grid-section">
+      <div class="blog-grid" id="blog-grid">
+
+        <!-- Featured Post -->
+        <article class="blog-card featured-card" data-category="Income">
+          <div class="blog-card-body">
+            <div><span class="blog-card-chip" style="background:#00B4A220;color:#00B4A2">Income</span><span class="featured-tag">FEATURED</span></div>
+            <h3><a href="/build-100k-year-online-business-from-scratch-2026">How I'd Build a $100k/Year Online Business From Scratch in 2026 (Step by Step)</a></h3>
+            <p class="blog-card-excerpt">If I were starting from zero today, here's exactly how I'd build a $100k/year online business using free AI tools — with a real month-by-month roadmap and income projections.</p>
+            <div class="blog-card-meta">
+              <span>July 10, 2026 · 9 min read</span>
+              <a href="/build-100k-year-online-business-from-scratch-2026" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 1 -->
+        <article class="blog-card" data-category="AI Tools">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#6C63FF20;color:#6C63FF">AI Tools</span>
+            <h3><a href="/25-free-ai-tools-replace-paid-software-2026">25 Free AI Tools That Replace $500/Month in Software (2026 Edition)</a></h3>
+            <p class="blog-card-excerpt">The complete list of free AI tools that replace expensive software — tested and ranked for content creators and side hustlers in 2026.</p>
+            <div class="blog-card-meta">
+              <span>July 8, 2026 · 9 min read</span>
+              <a href="/25-free-ai-tools-replace-paid-software-2026" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card" data-category="Income">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#00B4A220;color:#00B4A2">Income</span>
+            <h3><a href="/make-1000-month-affiliate-marketing-zero">How to Make $1,000/Month with Affiliate Marketing (Starting from Zero)</a></h3>
+            <p class="blog-card-excerpt">A step-by-step guide to earning $1,000/month through affiliate marketing — no audience, no website required to start.</p>
+            <div class="blog-card-meta">
+              <span>July 8, 2026 · 8 min read</span>
+              <a href="/make-1000-month-affiliate-marketing-zero" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card" data-category="AI Tools">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#6C63FF20;color:#6C63FF">AI Tools</span>
+            <h3><a href="/claude-vs-chatgpt-vs-gemini-best-free-ai-2026">Claude vs ChatGPT vs Gemini: Which Free AI Is Best for Making Money in 2026?</a></h3>
+            <p class="blog-card-excerpt">An honest comparison of Claude, ChatGPT, and Gemini free tiers — tested for content creation, SEO, and income generation.</p>
+            <div class="blog-card-meta">
+              <span>July 9, 2026 · 7 min read</span>
+              <a href="/claude-vs-chatgpt-vs-gemini-best-free-ai-2026" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-card" data-category="Beginner">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#FFA94D20;color:#FFA94D">Beginner</span>
+            <h3><a href="/start-blog-zero-dollars-make-money-90-days">How to Start a Blog With $0 and Make Money in 90 Days</a></h3>
+            <p class="blog-card-excerpt">The exact step-by-step process to launch a profitable blog for free in 2026 — from choosing a niche to earning your first $500.</p>
+            <div class="blog-card-meta">
+              <span>July 9, 2026 · 9 min read</span>
+              <a href="/start-blog-zero-dollars-make-money-90-days" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="blog-card" data-category="Templates">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#b388ff20;color:#b388ff">Templates</span>
+            <h3><a href="/notion-side-hustle-system-manage-income-streams">The Notion Side Hustle System: Manage 3 Income Streams Without Losing Your Mind</a></h3>
+            <p class="blog-card-excerpt">How to build a Notion workspace that tracks multiple income streams, client work, and content creation — without the overwhelm.</p>
+            <div class="blog-card-meta">
+              <span>July 9, 2026 · 8 min read</span>
+              <a href="/notion-side-hustle-system-manage-income-streams" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="blog-card" data-category="Income">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#00B4A220;color:#00B4A2">Income</span>
+            <h3><a href="/raptive-vs-mediavine-vs-adsense-2026">Raptive vs Mediavine vs Google AdSense: Which Ad Network Pays Most in 2026?</a></h3>
+            <p class="blog-card-excerpt">A data-driven comparison of Raptive, Mediavine, and Google AdSense RPMs, traffic requirements, and application processes in 2026.</p>
+            <div class="blog-card-meta">
+              <span>July 9, 2026 · 8 min read</span>
+              <a href="/raptive-vs-mediavine-vs-adsense-2026" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 7 -->
+        <article class="blog-card" data-category="Income">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#00B4A220;color:#00B4A2">Income</span>
+            <h3><a href="/sell-digital-products-online-beginners-guide-2026">How to Sell Digital Products Online: The Complete Beginner's Guide (2026)</a></h3>
+            <p class="blog-card-excerpt">Everything you need to know to create, price, and sell digital products online in 2026 — from idea to first sale in under a week.</p>
+            <div class="blog-card-meta">
+              <span>July 10, 2026 · 9 min read</span>
+              <a href="/sell-digital-products-online-beginners-guide-2026" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 8 -->
+        <article class="blog-card" data-category="Beginner">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#FFA94D20;color:#FFA94D">Beginner</span>
+            <h3><a href="/ways-use-chatgpt-make-money-this-week">10 Ways to Use ChatGPT to Make Money This Week</a></h3>
+            <p class="blog-card-excerpt">Ten legitimate, tested ways to use ChatGPT to earn real money this week — no experience required, no upfront cost needed.</p>
+            <div class="blog-card-meta">
+              <span>July 10, 2026 · 8 min read</span>
+              <a href="/ways-use-chatgpt-make-money-this-week" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 9 -->
+        <article class="blog-card" data-category="SEO">
+          <div class="blog-card-body">
+            <span class="blog-card-chip" style="background:#51CF6620;color:#51CF66">SEO</span>
+            <h3><a href="/rank-google-2026-ai-assisted-seo-strategy">How to Rank on Google in 2026: The AI-Assisted SEO Strategy That Actually Works</a></h3>
+            <p class="blog-card-excerpt">The exact SEO workflow to rank new blog posts on Google page 1 — powered by free AI tools and tested on a brand-new domain.</p>
+            <div class="blog-card-meta">
+              <span>July 10, 2026 · 8 min read</span>
+              <a href="/rank-google-2026-ai-assisted-seo-strategy" class="blog-card-link">Read guide →</a>
+            </div>
+          </div>
+        </article>
+
+        <p class="no-posts" id="no-posts">No guides found in this category yet — check back soon.</p>
+      </div>
+    </section>
+
+    <section class="section newsletter-section">
+      <div class="container">
+        <div class="newsletter-box">
+          <div class="newsletter-left">
+            <p class="eyebrow">Never Miss a Guide</p>
+            <h2>Get New Guides Every Week — Free</h2>
+            <p>Every Tuesday: a new deep-dive guide in your inbox. Plus a free welcome gift when you subscribe.</p>
+            <ul class="nl-features">
+              <li>✦ Weekly AI tool breakdowns</li>
+              <li>✦ Real income reports</li>
+              <li>✦ Free templates every month</li>
+            </ul>
+          </div>
+          <div class="newsletter-right">
+            <p class="nl-count"><strong>2,400+</strong> readers already inside</p>
+            <form class="nl-form" id="nl-form" onsubmit="handleNewsletterSubmit(event)">
+              <div class="nl-input-group"><input type="text" name="name" placeholder="First name" /></div>
+              <div class="nl-input-group"><input type="email" name="email" placeholder="your@email.com" required /></div>
+              <button type="submit" class="btn btn-primary btn-full">Subscribe Free →</button>
+              <p class="nl-disclaimer">No spam. Unsubscribe anytime.</p>
+            </form>
+            <div class="nl-success" id="nl-success" style="display:none">
+              <div class="nl-success-icon">🎉</div>
+              <p><strong>You're in!</strong> Check your inbox for your welcome guide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <svg width="30" height="30" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="9" fill="var(--green,#00e676)"/><rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/><rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/><rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/></svg>
+            <span class="logo-text">StackedDaily</span>
+          </a>
+          <p class="footer-tagline">AI tools and income strategies for everyday people.</p>
+        </div>
+        <div class="footer-col"><h4>Content</h4><a href="/blog">Free Guides</a><a href="/#tools">AI Tools</a><a href="/#roadmap">Roadmap</a></div>
+        <div class="footer-col"><h4>Products</h4><a href="/shop">Shop All</a><a href="/shop">Free Blueprint</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="/#about">About</a><a href="mailto:hello@stackeddaily.org">Contact</a><a href="#">Privacy</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 StackedDaily. All rights reserved.</p>
+        <p>Some links are affiliate links — we earn a small commission at no cost to you.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+  <script>
+    // Filter logic
+    const btns = document.querySelectorAll('#filters button');
+    const cards = document.querySelectorAll('#blog-grid .blog-card');
+    const noPosts = document.getElementById('no-posts');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        let visible = 0;
+        cards.forEach(card => {
+          const show = f === 'all' || card.dataset.category === f;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        noPosts.style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+  </script>
+  <script src="/popup.js"></script>
+</body>
+</html>

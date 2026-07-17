@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>Free Tools & Resources — The Tools I Use to Run StackedDaily</title>
+  <meta name="description" content="The exact free and paid tools StackedDaily uses to write content, design graphics, run email marketing, host the site, and sell digital products." />
+  <meta name="keywords" content="AI tools, free tools, StackedDaily resources, ChatGPT, Claude, Perplexity, Canva, ConvertKit, Vercel" />
+  <link rel="canonical" href="https://www.stackeddaily.org/resources.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.stackeddaily.org/resources.html" />
+  <meta property="og:title" content="Free Tools & Resources | StackedDaily" />
+  <meta property="og:description" content="The exact tools StackedDaily uses to write, design, market, host, and sell — all in one place." />
+  <meta property="og:image" content="https://www.stackeddaily.org/og-image.png" />
+  <meta property="og:site_name" content="StackedDaily" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Tools & Resources | StackedDaily" />
+  <meta name="twitter:description" content="The exact tools StackedDaily uses to write, design, market, host, and sell." />
+  <meta name="twitter:image" content="https://www.stackeddaily.org/og-image.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="popup.css" />
+
+  <style>
+    /* ============================================================
+       RESOURCES PAGE — page-specific styles
+       Matches dark navy (#0b1220 family) + electric green (#00e676) brand
+       ============================================================ */
+    .resources-hero{
+      padding:clamp(4.5rem,9vw,7.5rem) 0 2.5rem;text-align:center;
+      position:relative;
+    }
+    .resources-hero .eyebrow{justify-content:center;display:flex}
+    .resources-hero h1{
+      font-size:clamp(2rem,1.5rem + 2.2vw,3.75rem);
+      font-weight:900;letter-spacing:-.04em;margin-bottom:1rem;
+    }
+    .resources-hero h1 em{font-style:normal;color:var(--green)}
+    .resources-hero p{font-size:1.05rem;color:var(--text-2);max-width:52ch;margin-inline:auto}
+    .resources-disclosure{
+      display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;
+      background:var(--bg-3);border:1px solid var(--border);
+      padding:.5rem 1rem;border-radius:999px;font-size:.8rem;color:var(--text-2);
+    }
+    .resources-disclosure strong{color:var(--green)}
+
+    .resource-section{padding-block:clamp(2.5rem,5vw,4rem)}
+    .resource-section-head{margin-bottom:1.75rem}
+    .resource-section-head .cat-eyebrow{
+      font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
+      color:var(--green);margin-bottom:.4rem;display:block;
+    }
+    .resource-section-head h2{font-size:clamp(1.4rem,1.1rem + 1vw,2rem);font-weight:900;letter-spacing:-.03em}
+
+    .tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+
+    .tool-card{
+      background:var(--bg-2);border:1px solid var(--border);
+      border-radius:var(--radius-xl);padding:1.75rem;
+      display:flex;flex-direction:column;gap:.9rem;
+      transition:border-color var(--dur),transform var(--dur),box-shadow var(--dur);
+    }
+    .tool-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:var(--green-glow)}
+
+    .tool-card-top{display:flex;align-items:center;gap:.75rem}
+    .tool-icon{
+      width:44px;height:44px;border-radius:var(--radius-md);
+      background:var(--green-dim);border:1px solid rgba(0,230,118,.25);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.3rem;flex-shrink:0;
+    }
+    .tool-card h3{font-size:1.05rem;font-weight:800;color:var(--text)}
+    .tool-card p{font-size:.875rem;color:var(--text-2);line-height:1.6;flex:1;max-width:none}
+    .tool-card .btn{align-self:flex-start;margin-top:.25rem}
+
+    .resources-cta{
+      margin-top:1rem;background:var(--bg-2);border:1px solid var(--border);
+      border-radius:var(--radius-2xl);padding:clamp(2rem,5vw,3rem);
+      text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem;
+    }
+    .resources-cta h2{font-size:clamp(1.5rem,1.2rem + 1.2vw,2.25rem);font-weight:900;letter-spacing:-.03em}
+    .resources-cta p{color:var(--text-2);max-width:48ch}
+  </style>
+</head>
+<body>
+
+  <!-- ===================== ANNOUNCEMENT BAR ===================== -->
+  <div class="announce-bar" id="announce-bar">
+    <div class="announce-inner">
+      <span class="announce-dot"></span>
+      <span>Free blueprint: 90-Day AI Income Roadmap — <a href="shop.html">Download now →</a></span>
+    </div>
+    <button class="announce-close" onclick="document.getElementById('announce-bar').style.display='none'" aria-label="Close">✕</button>
+  </div>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="header" id="header">
+    <div class="nav-inner">
+      <a href="index.html" class="logo" aria-label="StackedDaily Home">
+        <svg class="logo-icon" width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="9" fill="var(--color-primary)"/>
+          <rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/>
+          <rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/>
+          <rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/>
+          <circle cx="27" cy="24.5" r="4.5" fill="#0d0f14" stroke="white" stroke-width="1.5"/>
+          <path d="M25.5 24.5L26.7 25.7L28.5 23.5" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">StackedDaily</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#tools">AI Tools</a>
+        <a href="blog.html">Free Guides</a>
+        <a href="shop.html">Shop</a>
+        <a href="resources.html" class="active">Free Tools</a>
+        <a href="index.html#roadmap">Roadmap</a>
+        <a href="index.html#about">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <a href="shop.html" class="btn btn-primary nav-cta">Get Free Blueprint</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <a href="index.html#tools">AI Tools</a>
+      <a href="blog.html">Free Guides</a>
+      <a href="shop.html">Shop</a>
+      <a href="resources.html">Free Tools</a>
+      <a href="index.html#roadmap">Roadmap</a>
+      <a href="index.html#about">About</a>
+      <a href="shop.html" class="btn btn-primary">Get Free Blueprint →</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="resources-hero">
+      <div class="container">
+        <p class="eyebrow">Free Tools & Resources</p>
+        <h1>The Exact Tools I Use to <em>Run StackedDaily</em></h1>
+        <p>Every AI tool, design app, email platform, and hosting service behind this site — the same free (and freemium) stack you can start with today.</p>
+        <div class="resources-disclosure">
+          <span>💚</span>
+          <span>Some links below are <strong>affiliate links</strong> — we may earn a small commission at no cost to you.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AI WRITING TOOLS ===================== -->
+    <section class="resource-section" id="ai-writing">
+      <div class="container">
+        <div class="resource-section-head">
+          <span class="cat-eyebrow">01 — Content Creation</span>
+          <h2>AI Writing Tools</h2>
+        </div>
+        <div class="tool-grid">
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">🤖</div>
+              <h3>ChatGPT</h3>
+            </div>
+            <p>The go-to AI for drafting blog posts, outlines, product descriptions, and brainstorming — free tier is more than enough to start.</p>
+            <a href="https://chat.openai.com" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">🧠</div>
+              <h3>Claude</h3>
+            </div>
+            <p>My favorite for long-form writing and editing — better tone control and fewer generic phrases than most alternatives.</p>
+            <a href="https://claude.ai" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">🔎</div>
+              <h3>Perplexity</h3>
+            </div>
+            <p>Research assistant that cites real sources — I use it for fact-checking stats and finding up-to-date data for every guide.</p>
+            <a href="https://perplexity.ai" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DESIGN TOOLS ===================== -->
+    <section class="resource-section section-tinted" id="design-tools">
+      <div class="container">
+        <div class="resource-section-head">
+          <span class="cat-eyebrow">02 — Visuals</span>
+          <h2>Design Tools</h2>
+        </div>
+        <div class="tool-grid">
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">🎨</div>
+              <h3>Canva</h3>
+            </div>
+            <p>Every graphic, social post, and lead magnet cover on this site was made in Canva — no design skills required.</p>
+            <a href="https://canva.com/affiliates/STACKEDDAILY" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">✨</div>
+              <h3>Adobe Express</h3>
+            </div>
+            <p>A solid Canva alternative with strong AI image tools and clean templates for quick social graphics.</p>
+            <a href="https://adobe.com/express" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EMAIL MARKETING ===================== -->
+    <section class="resource-section" id="email-marketing">
+      <div class="container">
+        <div class="resource-section-head">
+          <span class="cat-eyebrow">03 — Growth</span>
+          <h2>Email Marketing</h2>
+        </div>
+        <div class="tool-grid">
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">✉️</div>
+              <h3>ConvertKit</h3>
+            </div>
+            <p>The email platform StackedDaily runs on — built for creators, with easy automations for lead magnets like our blueprint.</p>
+            <a href="https://convertkit.com?lmref=stackeddaily" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">🐵</div>
+              <h3>Mailchimp</h3>
+            </div>
+            <p>A familiar, beginner-friendly option with a generous free tier if you're just getting your list started.</p>
+            <a href="https://mailchimp.com" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WEBSITE & HOSTING ===================== -->
+    <section class="resource-section section-tinted" id="hosting">
+      <div class="container">
+        <div class="resource-section-head">
+          <span class="cat-eyebrow">04 — Infrastructure</span>
+          <h2>Website & Hosting</h2>
+        </div>
+        <div class="tool-grid">
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">▲</div>
+              <h3>Vercel</h3>
+            </div>
+            <p>StackedDaily is hosted on Vercel — fast global deploys, generous free tier, and zero server maintenance.</p>
+            <a href="https://vercel.com" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">🌐</div>
+              <h3>Porkbun</h3>
+            </div>
+            <p>Where I registered stackeddaily.org — cheap domains, clean dashboard, and no upsell spam.</p>
+            <a href="https://porkbun.com" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUCTIVITY ===================== -->
+    <section class="resource-section" id="productivity">
+      <div class="container">
+        <div class="resource-section-head">
+          <span class="cat-eyebrow">05 — Workflow</span>
+          <h2>Productivity</h2>
+        </div>
+        <div class="tool-grid">
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">📓</div>
+              <h3>Notion</h3>
+            </div>
+            <p>My entire content calendar, income tracker, and idea backlog live in Notion — one workspace for everything.</p>
+            <a href="https://notion.so/product/affiliates" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">✅</div>
+              <h3>Grammarly</h3>
+            </div>
+            <p>Catches typos and awkward phrasing before anything gets published — runs quietly in the background everywhere I write.</p>
+            <a href="https://grammarly.com" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SELL DIGITAL PRODUCTS ===================== -->
+    <section class="resource-section section-tinted" id="sell-products">
+      <div class="container">
+        <div class="resource-section-head">
+          <span class="cat-eyebrow">06 — Monetization</span>
+          <h2>Sell Digital Products</h2>
+        </div>
+        <div class="tool-grid">
+
+          <div class="tool-card">
+            <div class="tool-card-top">
+              <div class="tool-icon">🛍️</div>
+              <h3>Etsy</h3>
+            </div>
+            <p>Where StackedDaily lists templates and guides for sale — built-in buyer traffic makes it the easiest place to start selling.</p>
+            <a href="https://etsy.com/shop/StackedDaily" class="btn btn-outline" target="_blank" rel="noopener sponsored">Try Free →</a>
+          </div>
+
+        </div>
+
+        <div class="resources-cta">
+          <h2>Want the Full Roadmap, Not Just the Tools?</h2>
+          <p>These tools are just the "how." Get the free 90-Day AI Income Blueprint for the exact step-by-step plan to your first $1,000/month.</p>
+          <a href="shop.html" class="btn btn-primary btn-xl">Get the Free Blueprint →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <rect width="36" height="36" rx="9" fill="var(--color-primary)"/>
+              <rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/>
+              <rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/>
+              <rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/>
+            </svg>
+            <span class="logo-text">StackedDaily</span>
+          </a>
+          <p class="footer-tagline">AI tools and income strategies for everyday people. No hype, just results.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Twitter / X" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            </a>
+            <a href="#" aria-label="Newsletter" class="social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Content</h4>
+          <a href="blog.html">Free Guides</a>
+          <a href="blog.html">All Articles</a>
+          <a href="index.html#tools">AI Tools</a>
+          <a href="index.html#roadmap">$100k Roadmap</a>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <a href="shop.html">Shop All</a>
+          <a href="shop.html">Free Blueprint</a>
+          <a href="resources.html">Free Tools</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="index.html#about">About</a>
+          <a href="mailto:hello@stackeddaily.org">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Affiliate Disclosure</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 StackedDaily. All rights reserved.</p>
+        <p>Some links on this site are affiliate links. We earn a small commission — at no extra cost to you.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
