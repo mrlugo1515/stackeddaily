@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="popup.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2729260830120890" crossorigin="anonymous"></script>
-  <!-- Gumroad embed script -->
-  <script src="https://gumroad.com/js/gumroad.js"></script>
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
   <style>
     /* ── Store page overrides ── */
     .store-hero {
@@ -160,30 +160,30 @@
       color: var(--text-3);
     }
 
-    /* Gumroad button override */
-    .gumroad-button {
-      display: inline-flex !important;
+    /* PayPal button containers */
+    .paypal-btn-wrap {
+      width: 100%;
+      min-height: 50px;
+    }
+    /* Free download button */
+    .btn-free-download {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 100% !important;
-      padding: .9rem 1.5rem !important;
-      background: var(--color-primary) !important;
-      color: #000 !important;
-      font-family: inherit !important;
-      font-size: 1rem !important;
-      font-weight: 800 !important;
-      border-radius: 12px !important;
-      border: none !important;
-      cursor: pointer !important;
-      text-decoration: none !important;
-      transition: opacity .15s ease !important;
+      width: 100%;
+      padding: .9rem 1.5rem;
+      background: #C9A84C;
+      color: #000;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity .15s ease;
     }
-    .gumroad-button:hover { opacity: .85 !important; }
-    .gumroad-button.gold {
-      background: #C9A84C !important;
-      color: #000 !important;
-    }
-    .gumroad-button-logo { display: none !important; }
+    .btn-free-download:hover { opacity: .85; }
 
     /* ── Guarantee banner ── */
     .guarantee-section {
@@ -304,7 +304,7 @@
             <span class="price-amount is-free">FREE</span>
             <span class="price-note">— always free</span>
           </div>
-          <a class="gumroad-button gold" href="https://stackeddailyshop.gumroad.com/l/blueprint" target="_blank" data-gumroad-overlay-checkout="true">
+          <a class="btn-free-download" href="mailto:hello@stackeddaily.org?subject=Free Blueprint Download&body=Hi! Please send me the free 90-Day AI Income Blueprint. Thank you!">
             Download Free →
           </a>
         </div>
@@ -329,9 +329,7 @@
             <span class="price-amount">$9</span>
             <span class="price-note">one-time — instant download</span>
           </div>
-          <a class="gumroad-button" href="https://stackeddailyshop.gumroad.com/l/aitoolkit" target="_blank" data-gumroad-overlay-checkout="true">
-            Buy Now — $9 →
-          </a>
+          <div class="paypal-btn-wrap" id="paypal-btn-toolkit"></div>
         </div>
       </div>
 
@@ -354,9 +352,7 @@
             <span class="price-amount">$17</span>
             <span class="price-note">one-time — instant access</span>
           </div>
-          <a class="gumroad-button" href="https://stackeddailyshop.gumroad.com/l/notiondashboard" target="_blank" data-gumroad-overlay-checkout="true">
-            Buy Now — $17 →
-          </a>
+          <div class="paypal-btn-wrap" id="paypal-btn-notion"></div>
         </div>
       </div>
 
@@ -425,5 +421,70 @@
 
   <script src="script.js"></script>
   <script src="popup.js"></script>
+
+  <script>
+    // ── PayPal Buttons ──────────────────────────────────────────
+    // NOTE: Replace YOUR_PAYPAL_CLIENT_ID in the SDK src above with your
+    // real PayPal client ID from developer.paypal.com once you connect.
+    // The buttons below use sandbox mode (client-id=sb) until then.
+
+    const PAYPAL_EMAIL = 'mr.jonathonlugo@gmail.com';
+
+    // Product: AI Toolkit — $9
+    paypal.Buttons({
+      style: {
+        layout: 'vertical',
+        color: 'gold',
+        shape: 'rect',
+        label: 'buynow',
+        height: 50
+      },
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            description: 'The $0 AI Toolkit Guide — StackedDaily',
+            amount: { value: '9.00', currency_code: 'USD' }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          window.location.href = 'thank-you.html?product=toolkit&name=' +
+            encodeURIComponent(details.payer.name.given_name);
+        });
+      },
+      onError: function(err) {
+        alert('Payment failed. Please try again or email hello@stackeddaily.org');
+      }
+    }).render('#paypal-btn-toolkit');
+
+    // Product: Notion Dashboard — $17
+    paypal.Buttons({
+      style: {
+        layout: 'vertical',
+        color: 'gold',
+        shape: 'rect',
+        label: 'buynow',
+        height: 50
+      },
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            description: 'Notion Side Hustle Dashboard — StackedDaily',
+            amount: { value: '17.00', currency_code: 'USD' }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          window.location.href = 'thank-you.html?product=notion&name=' +
+            encodeURIComponent(details.payer.name.given_name);
+        });
+      },
+      onError: function(err) {
+        alert('Payment failed. Please try again or email hello@stackeddaily.org');
+      }
+    }).render('#paypal-btn-notion');
+  </script>
 </body>
 </html>

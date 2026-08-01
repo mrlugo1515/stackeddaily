@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You! — StackedDaily</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .ty-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    .ty-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
+      max-width: 560px;
+      width: 100%;
+    }
+    .ty-icon { font-size: 4rem; margin-bottom: 1.5rem; }
+    .ty-card h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      margin-bottom: 1rem;
+    }
+    .ty-card p {
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .download-box {
+      background: var(--bg-3);
+      border: 1px solid var(--color-primary);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .download-box h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+    .download-box p {
+      font-size: .9rem;
+      color: var(--text-2);
+      margin-bottom: 1.25rem;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      width: 100%;
+      padding: .9rem 1.5rem;
+      background: var(--color-primary);
+      color: #000;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .btn-download:hover { opacity: .85; }
+    .ty-footer-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .ty-footer-links a {
+      font-size: .9rem;
+      color: var(--text-2);
+      text-decoration: none;
+    }
+    .ty-footer-links a:hover { color: var(--color-primary); }
+  </style>
+</head>
+<body>
+  <div class="ty-page">
+    <div class="ty-card">
+      <div class="ty-icon">🎉</div>
+      <h1 id="ty-headline">Payment Successful!</h1>
+      <p id="ty-intro">Your purchase is confirmed. Download your file below — it's also been sent to your PayPal email address.</p>
+
+      <div class="download-box" id="download-box">
+        <h2 id="product-name">Your Download</h2>
+        <p>Click below to download your file instantly. Save it to your phone or computer.</p>
+        <a href="#" id="download-link" class="btn-download">⬇ Download Now</a>
+      </div>
+
+      <p style="font-size:.88rem;color:var(--text-3)">
+        Questions? Email us at <a href="mailto:hello@stackeddaily.org" style="color:var(--color-primary)">hello@stackeddaily.org</a> and we'll respond within 24 hours.
+      </p>
+
+      <div class="ty-footer-links">
+        <a href="store.html">← Back to Store</a>
+        <a href="index.html">Home</a>
+        <a href="blog.html">Free Guides</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Read URL params to personalize and set correct download
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get('product');
+    const name = params.get('name');
+
+    const products = {
+      toolkit: {
+        name: 'The $0 AI Toolkit Guide',
+        file: 'ai_toolkit_guide.pdf'
+      },
+      notion: {
+        name: 'Notion Side Hustle Dashboard',
+        // Notion template — send buyer to email for the template link
+        file: null,
+        notionUrl: 'mailto:hello@stackeddaily.org?subject=Notion Dashboard Template Link&body=Hi! I just purchased the Notion Side Hustle Dashboard. Please send me the template link. Thank you!'
+      }
+    };
+
+    if (name) {
+      document.getElementById('ty-headline').textContent = 'Thank you, ' + name + '!';
+    }
+
+    if (product && products[product]) {
+      const p = products[product];
+      document.getElementById('product-name').textContent = p.name;
+
+      const link = document.getElementById('download-link');
+      if (p.file) {
+        link.href = p.file;
+        link.download = p.file;
+        link.textContent = '⬇ Download ' + p.name;
+      } else if (p.notionUrl) {
+        link.href = p.notionUrl;
+        link.textContent = '📧 Get My Notion Template Link';
+        document.getElementById('ty-intro').textContent =
+          'Your purchase is confirmed! Since Notion templates are shared via link, tap below and we\'ll email your template within 1 hour.';
+      }
+    }
+  </script>
+</body>
+</html>
