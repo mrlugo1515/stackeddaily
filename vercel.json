@@ -6,8 +6,11 @@
   "trailingSlash": false,
   "routes": [
     { "src": "/blog", "dest": "/blog.html" },
-    { "src": "/shop", "dest": "/shop.html" },
-    { "src": "/article", "dest": "/article.html" }
+    { "src": "/shop", "dest": "/store.html" },
+    { "src": "/store", "dest": "/store.html" },
+    { "src": "/resources", "dest": "/resources.html" },
+    { "src": "/article", "dest": "/article.html" },
+    { "src": "/thank-you", "dest": "/thank-you.html" }
   ],
   "headers": [
     {
