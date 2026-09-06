@@ -14,165 +14,301 @@
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="popup.css" />
-  <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=ASr9W3R3Ui98Flcln6XfRwr9fEbB_QS9JyrTya9WRVr3dAKu4QV0qKmJFj29CgjW0usgo2TgVP_J8Dnj&currency=USD" data-sdk-integration-source="button-factory"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1521824556709351" crossorigin="anonymous"></script>
+
   <style>
-    /* ── Store page overrides ── */
+    /* ── Store page — Cream & Gold Premium Theme ── */
+    :root {
+      --cream:     #F5F0E8;
+      --cream2:    #EDE8DD;
+      --cream3:    #E5DFD0;
+      --gold:      #C9A84C;
+      --gold-dk:   #8a6f3a;
+      --gold-lt:   #e8d5a0;
+      --charcoal:  #1C1C1C;
+      --muted:     #5a5040;
+      --light:     #9a8e78;
+      --border:    #D4CCB8;
+      --white:     #ffffff;
+    }
+
+    body { background: var(--cream); color: var(--charcoal); }
+
+    /* ── Hero ── */
     .store-hero {
-      padding: 7rem 0 4rem;
+      background: var(--charcoal);
+      padding: 6rem 1.5rem 5rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .store-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 80%, rgba(201,168,76,.12), transparent);
+      pointer-events: none;
+    }
+    .store-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .store-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border-radius: 99px;
+      margin-bottom: 1.5rem;
     }
     .store-hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 900;
       letter-spacing: -.03em;
+      color: #F5F0E8;
       margin-bottom: 1rem;
+      line-height: 1.1;
     }
+    .store-hero h1 span { color: var(--gold); }
     .store-hero p {
-      font-size: 1.15rem;
-      color: var(--text-2);
-      max-width: 540px;
-      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      color: #b8a98a;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
     }
-    .trust-bar {
+    .trust-pills {
       display: flex;
       justify-content: center;
-      gap: 2rem;
       flex-wrap: wrap;
-      margin-top: 1.5rem;
-      font-size: .92rem;
-      color: var(--text-2);
+      gap: .75rem;
     }
-    .trust-bar span { display: flex; align-items: center; gap: .4rem; }
+    .trust-pill {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      color: #b8a98a;
+      font-size: .82rem;
+      font-weight: 600;
+      padding: .4rem 1rem;
+      border-radius: 99px;
+    }
+    .trust-pill-icon { color: var(--gold); font-size: 1rem; }
+
+    /* ── Section label ── */
+    .section-label {
+      text-align: center;
+      padding: 3.5rem 1.5rem 1.5rem;
+    }
+    .section-label h2 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      color: var(--charcoal);
+    }
+    .section-label p { color: var(--muted); margin: .4rem auto 0; max-width: 480px; font-size: .95rem; }
 
     /* ── Product grid ── */
     .store-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.75rem;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 0 1.5rem 5rem;
     }
 
     /* ── Product card ── */
     .product-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
+      background: var(--white);
+      border: 1.5px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform .2s ease, box-shadow .2s ease;
       position: relative;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      box-shadow: 0 2px 12px rgba(28,28,28,.06);
     }
     .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,.25);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 56px rgba(28,28,28,.13);
+      border-color: var(--gold);
     }
     .product-card.featured {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 1px var(--color-primary);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px var(--gold-lt), 0 8px 32px rgba(201,168,76,.15);
+    }
+
+    /* Card top banner */
+    .card-banner {
+      background: var(--charcoal);
+      padding: 1.75rem 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-banner::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .card-banner.gold-banner {
+      background: linear-gradient(135deg, var(--charcoal) 60%, #2a2416);
+    }
+    .card-banner.notion-banner {
+      background: linear-gradient(135deg, #1a1f2e 60%, #1C1C1C);
     }
 
     .card-badge {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      background: var(--color-primary);
-      color: #000;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .08em;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      padding: .3rem .75rem;
+      padding: .3rem .8rem;
       border-radius: 99px;
-    }
-    .card-badge.free-badge { background: #C9A84C; color: #000; }
-
-    .card-top {
-      padding: 2rem 2rem 1rem;
-    }
-    .card-icon {
-      font-size: 2.8rem;
       margin-bottom: 1rem;
-      display: block;
     }
-    .card-top h2 {
-      font-size: 1.4rem;
-      font-weight: 800;
+    .card-badge.free-badge {
+      background: rgba(201,168,76,.2);
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,.4);
+    }
+
+    .card-title-area h2 {
+      font-size: 1.35rem;
+      font-weight: 900;
       letter-spacing: -.02em;
-      margin-bottom: .6rem;
+      color: #F5F0E8;
+      margin-bottom: .5rem;
+      line-height: 1.2;
     }
-    .card-top p {
-      font-size: .95rem;
-      color: var(--text-2);
+    .card-title-area p {
+      font-size: .88rem;
+      color: #b8a98a;
       line-height: 1.6;
     }
 
+    /* PDF preview strip */
+    .pdf-preview {
+      background: #F5F0E8;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-top: 1.25rem;
+      padding: .9rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .pdf-icon {
+      width: 36px;
+      height: 44px;
+      background: var(--charcoal);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .pdf-icon::after {
+      content: 'PDF';
+      font-size: 7px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: .04em;
+    }
+    .pdf-meta { flex: 1; }
+    .pdf-name { font-size: .8rem; font-weight: 700; color: var(--charcoal); }
+    .pdf-size { font-size: .73rem; color: var(--muted); margin-top: .1rem; }
+    .pdf-dl-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: .85rem;
+    }
+
+    /* Features */
     .card-features {
       list-style: none;
-      padding: 1.25rem 2rem;
+      padding: 1.25rem 1.75rem;
       margin: 0;
       border-top: 1px solid var(--border);
       flex: 1;
     }
     .card-features li {
-      font-size: .9rem;
-      color: var(--text-2);
-      padding: .45rem 0;
+      font-size: .88rem;
+      color: var(--muted);
+      padding: .5rem 0;
       display: flex;
       align-items: flex-start;
-      gap: .6rem;
-      border-bottom: 1px solid var(--border);
+      gap: .65rem;
+      border-bottom: 1px solid #ede8dd;
     }
     .card-features li:last-child { border-bottom: none; }
     .card-features li::before {
       content: "✦";
-      color: var(--color-primary);
+      color: var(--gold);
       flex-shrink: 0;
-      margin-top: .05em;
+      font-size: .75rem;
+      margin-top: .15em;
     }
 
+    /* Card footer */
     .card-foot {
-      padding: 1.5rem 2rem 2rem;
+      padding: 1.5rem 1.75rem 1.75rem;
       border-top: 1px solid var(--border);
+      background: #faf8f4;
     }
     .price-row {
       display: flex;
       align-items: baseline;
       gap: .5rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
     }
     .price-amount {
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       font-weight: 900;
       letter-spacing: -.04em;
-      color: var(--text-1);
+      color: var(--charcoal);
+      line-height: 1;
     }
-    .price-amount.is-free {
-      color: #C9A84C;
-      font-size: 2rem;
-    }
-    .price-note {
-      font-size: .85rem;
-      color: var(--text-3);
-    }
+    .price-amount.is-free { color: var(--gold); font-size: 2.2rem; }
+    .price-note { font-size: .82rem; color: var(--light); }
 
-    /* PayPal button containers */
-    .paypal-btn-wrap {
-      width: 100%;
-      min-height: 50px;
-    }
-    /* Free download button */
+    /* Buttons */
     .btn-free-download {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
+      gap: .6rem;
       width: 100%;
-      padding: .9rem 1.5rem;
-      background: #C9A84C;
-      color: #000;
+      padding: .95rem 1.5rem;
+      background: var(--gold);
+      color: var(--charcoal);
       font-family: inherit;
       font-size: 1rem;
       font-weight: 800;
@@ -180,40 +316,141 @@
       border: none;
       cursor: pointer;
       text-decoration: none;
-      transition: opacity .15s ease;
+      transition: background .15s, transform .15s;
+      letter-spacing: -.01em;
     }
-    .btn-free-download:hover { opacity: .85; }
+    .btn-free-download:hover { background: #b8973b; transform: translateY(-1px); }
 
-    /* ── Guarantee banner ── */
-    .guarantee-section {
-      text-align: center;
-      padding: 4rem 1.5rem;
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    /* PayPal wrap */
+    .paypal-btn-wrap { width: 100%; min-height: 50px; }
+
+    /* ── What You Get section ── */
+    .wyg-section {
+      background: var(--charcoal);
+      padding: 5rem 1.5rem;
+      position: relative;
     }
-    .guarantee-section h2 {
-      font-size: 1.75rem;
+    .wyg-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,.08), transparent);
+    }
+    .wyg-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .wyg-label {
+      display: inline-block;
+      color: var(--gold);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .wyg-section h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
       font-weight: 900;
       letter-spacing: -.03em;
-      margin: 1rem 0 .75rem;
+      color: #F5F0E8;
+      margin-bottom: 3rem;
+    }
+    .wyg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .wyg-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: border-color .2s;
+    }
+    .wyg-card:hover { border-color: rgba(201,168,76,.4); }
+    .wyg-icon {
+      font-size: 1.6rem;
+      margin-bottom: .75rem;
+    }
+    .wyg-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #F5F0E8;
+      margin-bottom: .4rem;
+    }
+    .wyg-card p { font-size: .88rem; color: #7a6e55; line-height: 1.6; }
+
+    /* ── Guarantee ── */
+    .guarantee-section {
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background: var(--cream2);
+      border-top: 1px solid var(--border);
+    }
+    .guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: var(--charcoal);
+      border-radius: 50%;
+      font-size: 1.8rem;
+      margin-bottom: 1.25rem;
+      border: 3px solid var(--gold);
+    }
+    .guarantee-section h2 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      margin-bottom: .75rem;
     }
     .guarantee-section p {
-      color: var(--text-2);
-      max-width: 520px;
+      color: var(--muted);
+      max-width: 500px;
       margin: 0 auto;
       font-size: .97rem;
       line-height: 1.65;
     }
+    .guarantee-section a { color: var(--gold); text-decoration: underline; }
 
     /* ── FAQ ── */
-    .faq-section { padding: 5rem 1.5rem; max-width: 720px; margin: 0 auto; }
-    .faq-section h2 { font-size: 2rem; font-weight: 900; letter-spacing: -.03em; margin-bottom: 2rem; text-align: center; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 1.4rem 0; }
-    .faq-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
-    .faq-item p { font-size: .93rem; color: var(--text-2); line-height: 1.6; margin: 0; }
+    .faq-section {
+      padding: 5rem 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .faq-section > h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1.35rem 0;
+    }
+    .faq-item h3 {
+      font-size: .98rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+    }
+    .faq-item h3::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: .75rem;
+      margin-top: .2em;
+      flex-shrink: 0;
+    }
+    .faq-item p { font-size: .92rem; color: var(--muted); line-height: 1.65; margin: 0; padding-left: 1.25rem; }
+
+    @media (max-width: 600px) {
+      .store-hero h1 { font-size: 2rem; }
+      .store-grid { grid-template-columns: 1fr; }
+    }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1521824556709351" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -268,66 +505,91 @@
 
     <!-- HERO -->
     <section class="store-hero">
-      <div class="container">
-        <p class="eyebrow">Digital Products</p>
-        <h1>Everything You Need to<br>Build Income With AI</h1>
-        <p>Instant download. No subscriptions. Start with the free blueprint and upgrade when you're ready.</p>
-        <div class="trust-bar">
-          <span>⚡ Instant delivery</span>
-          <span>🛡️ 30-day guarantee</span>
-          <span>📦 Download forever</span>
-          <span>💳 Secure checkout</span>
-        </div>
+      <div class="store-eyebrow">
+        <span>✦</span> Digital Products
+      </div>
+      <h1>Build Real Income<br><span>With AI Tools</span></h1>
+      <p>Instant downloads. No subscriptions. Start free, upgrade when ready.</p>
+      <div class="trust-pills">
+        <span class="trust-pill"><span class="trust-pill-icon">⚡</span> Instant PDF delivery</span>
+        <span class="trust-pill"><span class="trust-pill-icon">🛡</span> 30-day guarantee</span>
+        <span class="trust-pill"><span class="trust-pill-icon">♾</span> Download forever</span>
+        <span class="trust-pill"><span class="trust-pill-icon">💳</span> Secure checkout</span>
       </div>
     </section>
+
+    <!-- SECTION LABEL -->
+    <div class="section-label">
+      <h2>3 Products. Every Level Covered.</h2>
+      <p>From your first free guide to a full business system — pick where you are and start there.</p>
+    </div>
 
     <!-- PRODUCT GRID -->
     <div class="store-grid">
 
       <!-- PRODUCT 1: 90-Day Blueprint (FREE) -->
       <div class="product-card featured" id="blueprint">
-        <span class="card-badge free-badge">FREE</span>
-        <div class="card-top">
-          <span class="card-icon">🗺️</span>
-          <h2>90-Day AI Income Blueprint</h2>
-          <p>A day-by-day roadmap from $0 to $1,000/month using only free AI tools. Three phases: Build, Grow, Stack.</p>
+        <div class="card-banner gold-banner">
+          <div class="card-badge free-badge">✦ Always Free</div>
+          <div class="card-title-area">
+            <h2>90-Day AI Income Blueprint</h2>
+            <p>A day-by-day roadmap from $0 to $1,000/month using only free AI tools. Three phases: Build, Grow, Stack.</p>
+          </div>
+          <div class="pdf-preview">
+            <div class="pdf-icon"></div>
+            <div class="pdf-meta">
+              <div class="pdf-name">90-Day-AI-Income-Blueprint.pdf</div>
+              <div class="pdf-size">Instant download · 24 pages</div>
+            </div>
+            <div class="pdf-dl-icon">↓</div>
+          </div>
         </div>
         <ul class="card-features">
           <li>3 phases with daily action plans</li>
           <li>Income milestones for each week</li>
-          <li>Exact free tools to use at each stage</li>
+          <li>Exact free AI tools to use at each stage</li>
           <li>Weekly review checklists included</li>
-          <li>Bonus "Stack Your Day" workflow</li>
+          <li>Bonus "Stack Your Day" daily workflow</li>
         </ul>
         <div class="card-foot">
           <div class="price-row">
             <span class="price-amount is-free">FREE</span>
-            <span class="price-note">— always free</span>
+            <span class="price-note">— no email required</span>
           </div>
           <a class="btn-free-download" href="/blueprint-90day.pdf" download="90-Day-AI-Income-Blueprint.pdf">
-            Download Free →
+            ↓ &nbsp;Download Free Now
           </a>
         </div>
       </div>
 
       <!-- PRODUCT 2: AI Toolkit ($9) -->
       <div class="product-card">
-        <div class="card-top">
-          <span class="card-icon">⚡</span>
-          <h2>The $0 AI Toolkit Guide</h2>
-          <p>25 free AI tools that replace $500/month in paid software — with step-by-step tutorials and income strategies for each one.</p>
+        <div class="card-banner">
+          <div class="card-badge">Best Value</div>
+          <div class="card-title-area">
+            <h2>The $0 AI Toolkit Guide</h2>
+            <p>25 free AI tools that replace $500/month in paid software — with income strategies for each one.</p>
+          </div>
+          <div class="pdf-preview">
+            <div class="pdf-icon"></div>
+            <div class="pdf-meta">
+              <div class="pdf-name">AI-Toolkit-Guide.pdf</div>
+              <div class="pdf-size">Instant download · 9 pages · 5 categories</div>
+            </div>
+            <div class="pdf-dl-icon">↓</div>
+          </div>
         </div>
         <ul class="card-features">
-          <li>5 categories: Writing, Design, Video, Automation, SEO</li>
-          <li>What each tool replaces and its paid equivalent cost</li>
-          <li>Income strategy for each tool</li>
-          <li>"Stack Your Day" daily workflow included</li>
-          <li>Instant PDF download</li>
+          <li>5 categories: Writing, Design, Video, Automation, Sales</li>
+          <li>What each tool replaces + exact cost savings</li>
+          <li>Real income strategy for every tool</li>
+          <li>"Stack Your Day" daily AI workflow included</li>
+          <li>Instant PDF download — yours forever</li>
         </ul>
         <div class="card-foot">
           <div class="price-row">
             <span class="price-amount">$9</span>
-            <span class="price-note">one-time — instant download</span>
+            <span class="price-note">one-time · instant download</span>
           </div>
           <div class="paypal-btn-wrap" id="paypal-btn-toolkit"></div>
         </div>
@@ -335,22 +597,32 @@
 
       <!-- PRODUCT 3: Notion Dashboard ($17) -->
       <div class="product-card">
-        <div class="card-top">
-          <span class="card-icon">🧠</span>
-          <h2>Notion Side Hustle Dashboard</h2>
-          <p>Run your entire business from one organized Notion workspace. Tracks income, clients, content, and goals automatically.</p>
+        <div class="card-banner notion-banner">
+          <div class="card-badge">Most Complete</div>
+          <div class="card-title-area">
+            <h2>Notion Side Hustle Dashboard</h2>
+            <p>Run your entire business from one Notion workspace. Income, clients, content, and goals — all in one place.</p>
+          </div>
+          <div class="pdf-preview">
+            <div class="pdf-icon"></div>
+            <div class="pdf-meta">
+              <div class="pdf-name">Notion-Dashboard-Guide.pdf</div>
+              <div class="pdf-size">Instant download · Setup walkthrough included</div>
+            </div>
+            <div class="pdf-dl-icon">↓</div>
+          </div>
         </div>
         <ul class="card-features">
-          <li>6-module dashboard system</li>
-          <li>Income tracker with rollup formulas</li>
-          <li>Client CRM + project tracker</li>
-          <li>Content calendar built in</li>
+          <li>6-module dashboard system (Income, CRM, Content, Projects, Goals, Resources)</li>
+          <li>Income tracker with automatic monthly totals</li>
+          <li>Client CRM + content calendar built in</li>
           <li>60-minute setup walkthrough included</li>
+          <li>Works on Notion's free plan — no paid account needed</li>
         </ul>
         <div class="card-foot">
           <div class="price-row">
             <span class="price-amount">$17</span>
-            <span class="price-note">one-time — instant access</span>
+            <span class="price-note">one-time · instant access</span>
           </div>
           <div class="paypal-btn-wrap" id="paypal-btn-notion"></div>
         </div>
@@ -358,36 +630,65 @@
 
     </div>
 
+    <!-- WHAT YOU GET -->
+    <section class="wyg-section">
+      <div class="wyg-inner">
+        <span class="wyg-label">✦ Every purchase includes</span>
+        <h2>Professional Quality.<br>Instant Delivery.</h2>
+        <div class="wyg-grid">
+          <div class="wyg-card">
+            <div class="wyg-icon">⚡</div>
+            <h3>Instant PDF Download</h3>
+            <p>Your file downloads immediately after purchase. No waiting, no emails, no accounts required.</p>
+          </div>
+          <div class="wyg-card">
+            <div class="wyg-icon">♾</div>
+            <h3>Keep It Forever</h3>
+            <p>Your download link never expires. Access it again any time — even years from now.</p>
+          </div>
+          <div class="wyg-card">
+            <div class="wyg-icon">🛡</div>
+            <h3>30-Day Guarantee</h3>
+            <p>Not happy? Email us within 30 days for a full refund. No questions, no hassle.</p>
+          </div>
+          <div class="wyg-card">
+            <div class="wyg-icon">📱</div>
+            <h3>Works Everywhere</h3>
+            <p>PDFs open on any device — iPhone, Android, Mac, PC, or tablet. No special software needed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- GUARANTEE -->
     <div class="guarantee-section">
-      <div style="font-size:3rem">🛡️</div>
+      <div class="guarantee-badge">🛡</div>
       <h2>30-Day Money-Back Guarantee</h2>
-      <p>If any paid product doesn't deliver value within 30 days, email us at <a href="mailto:hello@stackeddaily.org">hello@stackeddaily.org</a> and we'll refund you immediately. No questions asked.</p>
+      <p>If any paid product doesn't deliver real value within 30 days, email <a href="mailto:hello@stackeddaily.org">hello@stackeddaily.org</a> for a full refund. No questions asked. We stand behind every product we sell.</p>
     </div>
 
     <!-- FAQ -->
     <section class="faq-section">
       <h2>Common Questions</h2>
-
       <div class="faq-item">
-        <h3>How do I get my purchase?</h3>
-        <p>After checkout you'll get an instant download link via email. You can also re-download from your Gumroad receipt anytime — no expiry.</p>
+        <h3>How do I get my product after buying?</h3>
+        <p>After PayPal checkout you'll be taken directly to a download page. Your file is ready instantly — no waiting for emails.</p>
       </div>
       <div class="faq-item">
         <h3>What format are the products?</h3>
-        <p>The AI Toolkit and Blueprint are PDF guides. The Notion Dashboard is a Notion template link — you duplicate it to your own free Notion account in one click.</p>
+        <p>The AI Toolkit Guide and Blueprint are professional PDF guides. The Notion Dashboard guide is also a PDF with a template link inside that you duplicate to your free Notion account.</p>
       </div>
       <div class="faq-item">
-        <h3>Do I need a Notion account?</h3>
-        <p>Yes, for the Dashboard only. Notion's free plan is all you need — no paid subscription required.</p>
+        <h3>Do I need a Notion account for the Dashboard?</h3>
+        <p>Yes, but Notion's free plan is all you need. No paid subscription required — ever.</p>
       </div>
       <div class="faq-item">
         <h3>What payment methods are accepted?</h3>
-        <p>All major credit and debit cards, PayPal, and Apple Pay via Gumroad's secure checkout.</p>
+        <p>All major credit and debit cards, PayPal balance, and Venmo via PayPal's secure checkout.</p>
       </div>
       <div class="faq-item">
         <h3>Can I share the files with others?</h3>
-        <p>Products are licensed for personal use only. Each purchase covers one person. Please don't redistribute.</p>
+        <p>Products are for personal use only. Each purchase covers one person. Please don't redistribute — it keeps prices low for everyone.</p>
       </div>
     </section>
 
@@ -423,67 +724,36 @@
   <script src="popup.js"></script>
 
   <script>
-    // ── PayPal Buttons ──────────────────────────────────────────
-    // NOTE: Replace YOUR_PAYPAL_CLIENT_ID in the SDK src above with your
-    // real PayPal client ID from developer.paypal.com once you connect.
-    // The buttons below use sandbox mode (client-id=sb) until then.
-
-    const PAYPAL_EMAIL = 'mr.jonathonlugo@gmail.com';
-
-    // Product: AI Toolkit — $9
+    // AI Toolkit — $9
     paypal.Buttons({
-      style: {
-        layout: 'vertical',
-        color: 'gold',
-        shape: 'rect',
-        label: 'buynow',
-        height: 50
-      },
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'buynow', height: 50 },
       createOrder: function(data, actions) {
         return actions.order.create({
-          purchase_units: [{
-            description: 'The $0 AI Toolkit Guide — StackedDaily',
-            amount: { value: '9.00', currency_code: 'USD' }
-          }]
+          purchase_units: [{ description: 'The $0 AI Toolkit Guide — StackedDaily', amount: { value: '9.00', currency_code: 'USD' } }]
         });
       },
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-          window.location.href = 'thank-you.html?product=toolkit&name=' +
-            encodeURIComponent(details.payer.name.given_name);
+          window.location.href = 'thank-you.html?product=toolkit&name=' + encodeURIComponent(details.payer.name.given_name);
         });
       },
-      onError: function(err) {
-        alert('Payment failed. Please try again or email hello@stackeddaily.org');
-      }
+      onError: function(err) { alert('Payment failed. Please try again or email hello@stackeddaily.org'); }
     }).render('#paypal-btn-toolkit');
 
-    // Product: Notion Dashboard — $17
+    // Notion Dashboard — $17
     paypal.Buttons({
-      style: {
-        layout: 'vertical',
-        color: 'gold',
-        shape: 'rect',
-        label: 'buynow',
-        height: 50
-      },
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'buynow', height: 50 },
       createOrder: function(data, actions) {
         return actions.order.create({
-          purchase_units: [{
-            description: 'Notion Side Hustle Dashboard — StackedDaily',
-            amount: { value: '17.00', currency_code: 'USD' }
-          }]
+          purchase_units: [{ description: 'Notion Side Hustle Dashboard — StackedDaily', amount: { value: '17.00', currency_code: 'USD' } }]
         });
       },
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-          window.location.href = 'thank-you.html?product=notion&name=' +
-            encodeURIComponent(details.payer.name.given_name);
+          window.location.href = 'thank-you.html?product=notion&name=' + encodeURIComponent(details.payer.name.given_name);
         });
       },
-      onError: function(err) {
-        alert('Payment failed. Please try again or email hello@stackeddaily.org');
-      }
+      onError: function(err) { alert('Payment failed. Please try again or email hello@stackeddaily.org'); }
     }).render('#paypal-btn-notion');
   </script>
 </body>
