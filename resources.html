@@ -25,6 +25,7 @@
   <meta name="twitter:image" content="https://www.stackeddaily.org/og-image.png" />
 
   <!-- Fonts -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect width='36' height='36' rx='9' fill='%231C1C1C'/><rect x='8' y='9' width='20' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='16' width='13' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='23' width='17' height='3.5' rx='1.75' fill='%23C9A84C'/></svg>" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
 
@@ -34,7 +35,7 @@
   <style>
     /* ============================================================
        RESOURCES PAGE — page-specific styles
-       Matches dark navy (#0b1220 family) + electric green (#00e676) brand
+       Matches dark navy (#0b1220 family) + electric green (#C9A84C) brand
        ============================================================ */
     .resources-hero{
       padding:clamp(4.5rem,9vw,7.5rem) 0 2.5rem;text-align:center;
@@ -45,20 +46,20 @@
       font-size:clamp(2rem,1.5rem + 2.2vw,3.75rem);
       font-weight:900;letter-spacing:-.04em;margin-bottom:1rem;
     }
-    .resources-hero h1 em{font-style:normal;color:var(--green)}
+    .resources-hero h1 em{font-style:normal;color:#C9A84C}
     .resources-hero p{font-size:1.05rem;color:var(--text-2);max-width:52ch;margin-inline:auto}
     .resources-disclosure{
       display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;
       background:var(--bg-3);border:1px solid var(--border);
       padding:.5rem 1rem;border-radius:999px;font-size:.8rem;color:var(--text-2);
     }
-    .resources-disclosure strong{color:var(--green)}
+    .resources-disclosure strong{color:#C9A84C}
 
     .resource-section{padding-block:clamp(2.5rem,5vw,4rem)}
     .resource-section-head{margin-bottom:1.75rem}
     .resource-section-head .cat-eyebrow{
       font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;
-      color:var(--green);margin-bottom:.4rem;display:block;
+      color:#C9A84C;margin-bottom:.4rem;display:block;
     }
     .resource-section-head h2{font-size:clamp(1.4rem,1.1rem + 1vw,2rem);font-weight:900;letter-spacing:-.03em}
 
@@ -70,12 +71,12 @@
       display:flex;flex-direction:column;gap:.9rem;
       transition:border-color var(--dur),transform var(--dur),box-shadow var(--dur);
     }
-    .tool-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:var(--green-glow)}
+    .tool-card:hover{border-color:#C9A84C;transform:translateY(-3px);box-shadow:var(--green-glow)}
 
     .tool-card-top{display:flex;align-items:center;gap:.75rem}
     .tool-icon{
       width:44px;height:44px;border-radius:var(--radius-md);
-      background:var(--green-dim);border:1px solid rgba(0,230,118,.25);
+      background:var(--green-dim);border:1px solid rgba(201,168,76,.25);
       display:flex;align-items:center;justify-content:center;
       font-size:1.3rem;flex-shrink:0;
     }
@@ -423,5 +424,16 @@
 
   <script src="script.js"></script>
   <script src="popup.js"></script>
+  <!-- Back to top -->
+  <button class="back-to-top" id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <script>
+    (function(){
+      var btn = document.getElementById('btt');
+      if(!btn) return;
+      window.addEventListener('scroll', function(){
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, {passive:true});
+    })();
+  </script>
 </body>
 </html>
