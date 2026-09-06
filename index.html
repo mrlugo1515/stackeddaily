@@ -41,6 +41,7 @@
   </script>
 
   <!-- Fonts -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect width='36' height='36' rx='9' fill='%231C1C1C'/><rect x='8' y='9' width='20' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='16' width='13' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='23' width='17' height='3.5' rx='1.75' fill='%23C9A84C'/></svg>" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
 
@@ -64,7 +65,7 @@
     <div class="nav-inner">
       <a href="index.html" class="logo" aria-label="StackedDaily Home">
         <svg class="logo-icon" width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-          <rect width="36" height="36" rx="9" fill="var(--color-primary)"/>
+          <rect width="36" height="36" rx="9" fill="#C9A84C"/>
           <rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/>
           <rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/>
           <rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/>
@@ -562,7 +563,7 @@
         <div class="footer-brand">
           <a href="index.html" class="logo">
             <svg width="30" height="30" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-              <rect width="36" height="36" rx="9" fill="var(--color-primary)"/>
+              <rect width="36" height="36" rx="9" fill="#C9A84C"/>
               <rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/>
               <rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/>
               <rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/>
@@ -613,5 +614,16 @@
 
   <script src="script.js"></script>
   <script src="popup.js"></script>
+  <!-- Back to top -->
+  <button class="back-to-top" id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <script>
+    (function(){
+      var btn = document.getElementById('btt');
+      if(!btn) return;
+      window.addEventListener('scroll', function(){
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, {passive:true});
+    })();
+  </script>
 </body>
 </html>
