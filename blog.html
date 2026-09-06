@@ -10,35 +10,109 @@
   <meta property="og:description" content="Free, in-depth guides on AI tools, affiliate marketing, digital products, SEO, and building passive income online." />
   <meta property="og:url" content="https://www.stackeddaily.org/blog" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"StackedDaily","url":"https://www.stackeddaily.org/blog","description":"Free guides on AI tools and side hustle income strategies."}</script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect width='36' height='36' rx='9' fill='%231C1C1C'/><rect x='8' y='9' width='20' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='16' width='13' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='23' width='17' height='3.5' rx='1.75' fill='%23C9A84C'/></svg>" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .blog-hero { padding: 7rem 1.5rem 3rem; text-align:center; background: var(--surface); }
-    .blog-hero h1 { font-size: clamp(2rem,5vw,3.25rem); font-weight:900; margin-bottom:.75rem; }
-    .blog-hero p { color: var(--text-muted); font-size:1.1rem; max-width:560px; margin:0 auto 2rem; }
+    /* ── Blog page styles — cream & gold ── */
+    :root { --surface:#FAF7F0; --text-muted:#5a5040; --border-c:#D4CCB8; --gold:#C9A84C; --charcoal:#1C1C1C; }
+    body { background:#F5F0E8; }
+
+    .blog-hero {
+      padding: 5rem 1.5rem 2.5rem;
+      text-align:center;
+      background: linear-gradient(180deg, #EDE8DD 0%, #F5F0E8 100%);
+      border-bottom: 1px solid #D4CCB8;
+    }
+    .blog-hero h1 { font-size: clamp(2rem,5vw,3.25rem); font-weight:900; margin-bottom:.75rem; color:#1C1C1C; }
+    .blog-hero p { color:#5a5040; font-size:1.05rem; max-width:520px; margin:0 auto 2rem; }
+
     .blog-filters { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; }
-    .blog-filters button { padding:.45rem 1.1rem; border-radius:99px; border:1.5px solid var(--border); background:transparent; color:var(--text-muted); font-size:.85rem; font-family:inherit; cursor:pointer; transition:all .2s; }
-    .blog-filters button.active, .blog-filters button:hover { background:var(--green); color:#000; border-color:var(--green); font-weight:700; }
-    .blog-grid-section { padding: 3rem 1.5rem 6rem; }
+    .blog-filters button {
+      padding:.45rem 1.15rem; border-radius:99px;
+      border:1.5px solid #D4CCB8; background:#FAF7F0;
+      color:#5a5040; font-size:.85rem; font-family:inherit;
+      cursor:pointer; transition:all .2s; font-weight:600;
+    }
+    .blog-filters button.active,
+    .blog-filters button:hover {
+      background:#C9A84C; color:#1C1C1C;
+      border-color:#C9A84C; font-weight:700;
+      box-shadow: 0 2px 10px rgba(201,168,76,.3);
+    }
+
+    .blog-count {
+      text-align:center; padding:1.5rem 1.5rem 0;
+      font-size:.85rem; color:#9a8e78; font-weight:600;
+    }
+
+    .blog-grid-section { padding: 2rem 1.5rem 6rem; }
     .blog-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap:1.5rem; max-width:1200px; margin:0 auto; }
-    .blog-card { background:var(--surface); border:1px solid var(--border); border-radius:1rem; overflow:hidden; transition:transform .2s, box-shadow .2s; display:flex; flex-direction:column; }
-    .blog-card:hover { transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.25); }
+
+    .blog-card {
+      background:#ffffff; border:1.5px solid #D4CCB8;
+      border-radius:16px; overflow:hidden;
+      transition:transform .22s, box-shadow .22s, border-color .22s;
+      display:flex; flex-direction:column;
+      box-shadow: 0 2px 8px rgba(28,20,10,.06);
+    }
+    .blog-card:hover {
+      transform:translateY(-5px);
+      box-shadow:0 20px 48px rgba(28,20,10,.12);
+      border-color:#C9A84C;
+    }
     .blog-card-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; }
-    .blog-card-chip { display:inline-block; padding:.25rem .75rem; border-radius:99px; font-size:.75rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-bottom:.875rem; }
-    .blog-card h3 { font-size:1.1rem; font-weight:800; line-height:1.35; margin-bottom:.5rem; }
-    .blog-card h3 a { color:var(--text); text-decoration:none; }
-    .blog-card h3 a:hover { color:var(--green); }
-    .blog-card-excerpt { color:var(--text-muted); font-size:.9rem; line-height:1.6; flex:1; margin-bottom:1rem; }
-    .blog-card-meta { display:flex; justify-content:space-between; align-items:center; font-size:.8rem; color:var(--text-muted); padding-top:.875rem; border-top:1px solid var(--border); }
-    .blog-card-link { color:var(--green); font-weight:700; text-decoration:none; font-size:.875rem; }
+    .blog-card-chip {
+      display:inline-block; padding:.22rem .7rem; border-radius:99px;
+      font-size:.72rem; font-weight:700; letter-spacing:.06em;
+      text-transform:uppercase; margin-bottom:.875rem;
+      background:rgba(201,168,76,.12); color:#8a6f3a;
+      border:1px solid rgba(201,168,76,.25);
+    }
+    .blog-card h3 { font-size:1.05rem; font-weight:800; line-height:1.35; margin-bottom:.5rem; color:#1C1C1C; }
+    .blog-card h3 a { color:#1C1C1C; text-decoration:none; }
+    .blog-card h3 a:hover { color:#C9A84C; }
+    .blog-card-excerpt { color:#5a5040; font-size:.88rem; line-height:1.6; flex:1; margin-bottom:1rem; }
+    .blog-card-meta {
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:.78rem; color:#9a8e78;
+      padding-top:.875rem; border-top:1px solid #EDE8DD;
+    }
+    .blog-card-link { color:#C9A84C; font-weight:700; text-decoration:none; font-size:.85rem; }
     .blog-card-link:hover { text-decoration:underline; }
-    .featured-card { grid-column: 1 / -1; display:grid; grid-template-columns:1fr 1fr; gap:0; }
-    @media(max-width:640px){ .featured-card { grid-template-columns:1fr; } }
-    .featured-card .blog-card-body { padding:2rem; justify-content:center; }
-    .featured-card h3 { font-size:1.4rem; }
-    .featured-tag { background:var(--green); color:#000; font-size:.7rem; font-weight:800; padding:.2rem .6rem; border-radius:4px; margin-left:.5rem; vertical-align:middle; }
-    .no-posts { display:none; text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1; }
+
+    /* NEW badge */
+    .new-badge {
+      display:inline-block; background:#C9A84C; color:#1C1C1C;
+      font-size:.62rem; font-weight:900; padding:.1rem .45rem;
+      border-radius:4px; margin-left:.4rem; vertical-align:middle;
+      letter-spacing:.05em;
+    }
+
+    /* Featured card */
+    .featured-card { grid-column: 1 / -1; }
+    .featured-card .blog-card-body { padding:2rem; }
+    .featured-card h3 { font-size:1.35rem; }
+    .featured-tag { background:#C9A84C; color:#1C1C1C; font-size:.7rem; font-weight:800; padding:.2rem .6rem; border-radius:4px; margin-left:.5rem; vertical-align:middle; }
+    .no-posts { display:none; text-align:center; padding:3rem; color:#9a8e78; grid-column:1/-1; }
+
+    /* Newsletter CTA inside blog */
+    .blog-cta-strip {
+      background:#1C1C1C; border-radius:16px;
+      padding:2.5rem 2rem; text-align:center;
+      margin:2rem auto 0; max-width:1200px;
+    }
+    .blog-cta-strip h3 { color:#F5F0E8; font-size:1.5rem; font-weight:900; margin-bottom:.5rem; }
+    .blog-cta-strip p { color:#b8a98a; font-size:.95rem; margin-bottom:1.25rem; }
+    .blog-cta-strip a {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:#C9A84C; color:#1C1C1C;
+      font-weight:800; font-size:.95rem;
+      padding:.85rem 1.75rem; border-radius:10px;
+      text-decoration:none; transition:background .2s;
+    }
+    .blog-cta-strip a:hover { background:#b8973b; }
   </style>
   <link rel="stylesheet" href="/popup.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1521824556709351" crossorigin="anonymous"></script>
@@ -52,7 +126,7 @@
     <div class="nav-inner">
       <a href="/" class="logo" aria-label="StackedDaily Home">
         <svg class="logo-icon" width="34" height="34" viewBox="0 0 36 36" fill="none">
-          <rect width="36" height="36" rx="9" fill="var(--green,#00e676)"/>
+          <rect width="36" height="36" rx="9" fill="#C9A84C"/>
           <rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/>
           <rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/>
           <rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/>
@@ -237,7 +311,7 @@
         <article class="blog-card" data-category="AI Tools">
           <div class="blog-card-body">
             <span class="blog-card-chip" style="background:#C9A84C20;color:#C9A84C">AI Tools</span>
-            <h3><a href="/best-ai-tools-for-beginners-2026">Best Free AI Tools for Beginners in 2026 (No Experience Needed)</a></h3>
+            <h3><a href="/best-ai-tools-for-beginners-2026">Best Free AI Tools for Beginners in 2026 (No Experience Needed)<span class="new-badge">NEW</span></a></h3>
             <p class="blog-card-excerpt">The 10 best free AI tools that actually work for beginners — no tech skills, no paid subscriptions, just results.</p>
             <div class="blog-card-meta">
               <span>Sept 1, 2026 · 7 min read</span>
@@ -249,7 +323,7 @@
         <article class="blog-card" data-category="Income">
           <div class="blog-card-body">
             <span class="blog-card-chip" style="background:#C9A84C20;color:#C9A84C">Income</span>
-            <h3><a href="/how-to-make-money-with-chatgpt-no-experience">How to Make Money With ChatGPT in 2026 (Even With Zero Experience)</a></h3>
+            <h3><a href="/how-to-make-money-with-chatgpt-no-experience">How to Make Money With ChatGPT in 2026 (Even With Zero Experience)<span class="new-badge">NEW</span></a></h3>
             <p class="blog-card-excerpt">5 real ways people are making $500–$5,000/month with ChatGPT — and exactly how to start each one today for free.</p>
             <div class="blog-card-meta">
               <span>Sept 1, 2026 · 8 min read</span>
@@ -261,7 +335,7 @@
         <article class="blog-card" data-category="Income">
           <div class="blog-card-body">
             <span class="blog-card-chip" style="background:#C9A84C20;color:#C9A84C">Income</span>
-            <h3><a href="/passive-income-ideas-2026-actually-work">7 Passive Income Ideas That Actually Work in 2026</a></h3>
+            <h3><a href="/passive-income-ideas-2026-actually-work">7 Passive Income Ideas That Actually Work in 2026<span class="new-badge">NEW</span></a></h3>
             <p class="blog-card-excerpt">Skip the hype — these are the only passive income streams worth your time in 2026, ranked by startup cost and earning potential.</p>
             <div class="blog-card-meta">
               <span>Sept 1, 2026 · 9 min read</span>
@@ -273,7 +347,7 @@
         <article class="blog-card" data-category="Beginner">
           <div class="blog-card-body">
             <span class="blog-card-chip" style="background:#C9A84C20;color:#C9A84C">Beginner</span>
-            <h3><a href="/etsy-digital-products-beginners-guide-2026">How to Sell Digital Products on Etsy in 2026 (Beginner's Guide)</a></h3>
+            <h3><a href="/etsy-digital-products-beginners-guide-2026">How to Sell Digital Products on Etsy in 2026 (Beginner's Guide)<span class="new-badge">NEW</span></a></h3>
             <p class="blog-card-excerpt">The complete step-by-step guide to opening an Etsy shop, creating digital products, and making your first sale — even if you're starting from zero.</p>
             <div class="blog-card-meta">
               <span>Sept 1, 2026 · 10 min read</span>
@@ -285,7 +359,7 @@
         <article class="blog-card" data-category="Templates">
           <div class="blog-card-body">
             <span class="blog-card-chip" style="background:#C9A84C20;color:#C9A84C">Templates</span>
-            <h3><a href="/notion-for-beginners-productivity-system-2026">Notion for Beginners: Build a Productivity System That Actually Sticks</a></h3>
+            <h3><a href="/notion-for-beginners-productivity-system-2026">Notion for Beginners: Build a Productivity System That Actually Sticks<span class="new-badge">NEW</span></a></h3>
             <p class="blog-card-excerpt">How to set up Notion from scratch in 30 minutes and build a system that manages your tasks, projects, and goals — all in one place.</p>
             <div class="blog-card-meta">
               <span>Sept 1, 2026 · 8 min read</span>
@@ -295,6 +369,12 @@
         </article>
 
         <p class="no-posts" id="no-posts">No guides found in this category yet — check back soon.</p>
+      </div>
+      <div class="blog-cta-strip">
+        <h3>Get the Free 90-Day Blueprint</h3>
+        <p>The exact roadmap from $0 to $1,000/month using free AI tools — no email required.</p>
+        <a href="/store">↓ Download Free Now</a>
+
       </div>
     </section>
 
@@ -334,7 +414,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo">
-            <svg width="30" height="30" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="9" fill="var(--green,#00e676)"/><rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/><rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/><rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/></svg>
+            <svg width="30" height="30" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="9" fill="#C9A84C"/><rect x="8" y="9" width="20" height="3.5" rx="1.75" fill="white"/><rect x="8" y="16" width="13" height="3.5" rx="1.75" fill="white"/><rect x="8" y="23" width="17" height="3.5" rx="1.75" fill="white"/></svg>
             <span class="logo-text">StackedDaily</span>
           </a>
           <p class="footer-tagline">AI tools and income strategies for everyday people.</p>
@@ -372,5 +452,16 @@
     });
   </script>
   <script src="/popup.js"></script>
+  <!-- Back to top -->
+  <button class="back-to-top" id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <script>
+    (function(){
+      var btn = document.getElementById('btt');
+      if(!btn) return;
+      window.addEventListener('scroll', function(){
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, {passive:true});
+    })();
+  </script>
 </body>
 </html>
