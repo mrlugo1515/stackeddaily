@@ -345,7 +345,7 @@
   width: 1.75rem;
   height: 1.75rem;
   background: var(--green-dim);
-  border: 1px solid rgba(0,230,118,.2);
+  border: 1px solid rgba(201,168,76,.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -355,7 +355,7 @@
   color: var(--green);
   top: .1rem;
 }
-[data-theme="light"] .article-ol li::before { border-color: rgba(0,168,84,.2); }
+[data-theme="light"] .article-ol li::before { border-color: rgba(201,168,76,.2); }
 
 /* ---- CALLOUT BOXES ---- */
 .article-callout {
@@ -384,10 +384,10 @@
 
 .callout-cta {
   background: var(--green-dim);
-  border-color: rgba(0,230,118,.2);
+  border-color: rgba(201,168,76,.2);
 }
 .callout-cta .callout-title { color: var(--green); }
-[data-theme="light"] .callout-cta { border-color: rgba(0,168,84,.2); }
+[data-theme="light"] .callout-cta { border-color: rgba(201,168,76,.2); }
 
 /* ---- TABLE ---- */
 .article-table-wrap {
@@ -473,7 +473,7 @@
 
 .savings-annual {
   background: var(--green-dim);
-  border-top: 1px solid rgba(0,230,118,.15);
+  border-top: 1px solid rgba(201,168,76,.15);
   font-weight: 800;
   color: var(--text);
 }
