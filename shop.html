@@ -10,5 +10,16 @@
 </head>
 <body>
   <p>Redirecting to the store... <a href="store.html">Click here if not redirected.</a></p>
+  <!-- Back to top -->
+  <button class="back-to-top" id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <script>
+    (function(){
+      var btn = document.getElementById('btt');
+      if(!btn) return;
+      window.addEventListener('scroll', function(){
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, {passive:true});
+    })();
+  </script>
 </body>
 </html>
