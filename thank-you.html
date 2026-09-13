@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,7 @@
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    body { background: #F5F0E8; }
     .ty-page {
       min-height: 100vh;
       display: flex;
@@ -19,40 +20,43 @@
       text-align: center;
     }
     .ty-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
+      background: #ffffff;
+      border: 1.5px solid #D4CCB8;
       border-radius: 24px;
       padding: 3.5rem 2.5rem;
       max-width: 560px;
       width: 100%;
+      box-shadow: 0 8px 40px rgba(28,20,10,.1);
     }
-    .ty-icon { font-size: 4rem; margin-bottom: 1.5rem; }
+    .ty-icon { font-size: 4rem; margin-bottom: 1.25rem; }
     .ty-card h1 {
       font-size: 2.2rem;
       font-weight: 900;
       letter-spacing: -.03em;
-      margin-bottom: 1rem;
+      color: #1C1C1C;
+      margin-bottom: .75rem;
     }
-    .ty-card p {
-      color: var(--text-2);
+    .ty-card > p {
+      color: #5a5040;
       line-height: 1.7;
       margin-bottom: 1.5rem;
     }
     .download-box {
-      background: var(--bg-3);
-      border: 1px solid var(--color-primary);
+      background: #FAF7F0;
+      border: 2px solid #C9A84C;
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 1.75rem;
       margin: 2rem 0;
     }
     .download-box h2 {
       font-size: 1.1rem;
       font-weight: 800;
-      margin-bottom: .5rem;
+      color: #1C1C1C;
+      margin-bottom: .4rem;
     }
     .download-box p {
       font-size: .9rem;
-      color: var(--text-2);
+      color: #5a5040;
       margin-bottom: 1.25rem;
     }
     .btn-download {
@@ -62,16 +66,26 @@
       gap: .5rem;
       width: 100%;
       padding: .9rem 1.5rem;
-      background: var(--color-primary);
-      color: #000;
+      background: #C9A84C;
+      color: #1C1C1C;
       font-family: inherit;
       font-size: 1rem;
       font-weight: 800;
       border-radius: 12px;
       text-decoration: none;
-      transition: opacity .15s;
+      transition: background .15s, transform .15s;
     }
-    .btn-download:hover { opacity: .85; }
+    .btn-download:hover { background: #b8973b; transform: translateY(-1px); }
+    .download-tracked { position: relative; }
+    .download-tracked::after {
+      content: '✓ Download started';
+      display: none;
+      position: absolute;
+      bottom: -1.75rem;
+      left: 50%; transform: translateX(-50%);
+      font-size: .8rem; color: #437A22; font-weight: 700; white-space: nowrap;
+    }
+    .download-tracked.done::after { display: block; }
     .ty-footer-links {
       display: flex;
       gap: 1rem;
@@ -81,10 +95,10 @@
     }
     .ty-footer-links a {
       font-size: .9rem;
-      color: var(--text-2);
+      color: #5a5040;
       text-decoration: none;
     }
-    .ty-footer-links a:hover { color: var(--color-primary); }
+    .ty-footer-links a:hover { color: #C9A84C; }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1521824556709351" crossorigin="anonymous"></script>
 </head>
@@ -93,16 +107,16 @@
     <div class="ty-card">
       <div class="ty-icon">🎉</div>
       <h1 id="ty-headline">Payment Successful!</h1>
-      <p id="ty-intro">Your purchase is confirmed. Download your file below — it's also been sent to your PayPal email address.</p>
+      <p id="ty-intro">Your purchase is confirmed. Download your file below — it's ready instantly.</p>
 
       <div class="download-box" id="download-box">
         <h2 id="product-name">Your Download</h2>
-        <p>Click below to download your file instantly. Save it to your phone or computer.</p>
-        <a href="#" id="download-link" class="btn-download">⬇ Download Now</a>
+        <p>Click below to save the file to your phone or computer.</p>
+        <a href="#" id="download-link" class="btn-download download-tracked">⬇ Download Now</a>
       </div>
 
-      <p style="font-size:.88rem;color:var(--text-3)">
-        Questions? Email us at <a href="mailto:hello@stackeddaily.org" style="color:var(--color-primary)">hello@stackeddaily.org</a> and we'll respond within 24 hours.
+      <p style="font-size:.88rem;color:#9a8e78">
+        Questions? Email <a href="mailto:hello@stackeddaily.org" style="color:#C9A84C;font-weight:700">hello@stackeddaily.org</a> — we respond within 24 hrs.
       </p>
 
       <div class="ty-footer-links">
@@ -114,43 +128,70 @@
   </div>
 
   <script>
-    // Read URL params to personalize and set correct download
-    const params = new URLSearchParams(window.location.search);
-    const product = params.get('product');
-    const name = params.get('name');
+    (function () {
+      // ── Product map ──────────────────────────────────────────
+      const products = {
+        toolkit: { name: 'The $0 AI Toolkit Guide',        file: 'ai-toolkit-guide.pdf',      price: 9  },
+        notion:  { name: 'Notion Side Hustle Dashboard',   file: 'notion-dashboard-guide.pdf', price: 17 }
+      };
 
-    const products = {
-      toolkit: {
-        name: 'The $0 AI Toolkit Guide',
-        file: 'ai-toolkit-guide.pdf'
-      },
-      notion: {
-        name: 'Notion Side Hustle Dashboard',
-        file: 'notion-dashboard-guide.pdf'
+      // ── Parse URL params ──────────────────────────────────────
+      const params  = new URLSearchParams(window.location.search);
+      const product = params.get('product');
+      const name    = params.get('name') || 'Customer';
+      const p       = products[product];
+
+      // ── Personalise heading ──────────────────────────────────
+      if (name && name !== 'Customer') {
+        document.getElementById('ty-headline').textContent = 'Thank you, ' + name + '!';
       }
-    };
 
-    if (name) {
-      document.getElementById('ty-headline').textContent = 'Thank you, ' + name + '!';
-    }
-
-    if (product && products[product]) {
-      const p = products[product];
-      document.getElementById('product-name').textContent = p.name;
-
-      const link = document.getElementById('download-link');
-      if (p.file) {
-        link.href = p.file;
+      // ── Set download link ────────────────────────────────────
+      if (p) {
+        document.getElementById('product-name').textContent = p.name;
+        const link = document.getElementById('download-link');
+        link.href     = p.file;
         link.download = p.file;
         link.textContent = '⬇ Download ' + p.name;
-      } else if (p.notionUrl) {
-        link.href = p.notionUrl;
-        link.textContent = '📧 Get My Notion Template Link';
-        document.getElementById('ty-intro').textContent =
-          'Your purchase is confirmed! Since Notion templates are shared via link, tap below and we\'ll email your template within 1 hour.';
+
+        // ── Track download click ─────────────────────────────
+        link.addEventListener('click', function () {
+          link.classList.add('done');
+          trackEvent('download', { product: p.name, file: p.file });
+        });
       }
-    }
+
+      // ── Fire sale tracking on page load ─────────────────────
+      // thank-you.html is noindex and only reachable after PayPal onApprove
+      if (p) {
+        trackEvent('sale', {
+          product:    p.name,
+          price:      p.price,
+          currency:   'USD',
+          customerName: name,
+          productKey: product
+        });
+      }
+
+      // ── Track helper ─────────────────────────────────────────
+      function trackEvent(type, data) {
+        try {
+          fetch('/api/track', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type,
+              ...data,
+              page:      window.location.href,
+              userAgent: navigator.userAgent,
+              clientTime: new Date().toISOString()
+            })
+          });
+        } catch (e) { /* silent — tracking must never break the download */ }
+      }
+    })();
   </script>
+
   <!-- Back to top -->
   <button class="back-to-top" id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
   <script>
