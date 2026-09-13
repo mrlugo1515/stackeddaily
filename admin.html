@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Dashboard — StackedDaily</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'><rect width='36' height='36' rx='9' fill='%231C1C1C'/><rect x='8' y='9' width='20' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='16' width='13' height='3.5' rx='1.75' fill='%23C9A84C'/><rect x='8' y='23' width='17' height='3.5' rx='1.75' fill='%23C9A84C'/></svg>" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Satoshi', sans-serif; background: #F5F0E8; color: #1C1C1C; min-height: 100vh; }
+
+    /* ── Login gate ─────────────────────────────── */
+    #login-gate {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem;
+    }
+    .login-card {
+      background: #fff; border: 1.5px solid #D4CCB8; border-radius: 20px;
+      padding: 2.5rem; width: 100%; max-width: 380px; text-align: center;
+      box-shadow: 0 8px 40px rgba(28,20,10,.1);
+    }
+    .login-card h1 { font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.6rem; font-weight: 900; margin-bottom: .4rem; }
+    .login-card p { color: #5a5040; font-size: .9rem; margin-bottom: 1.5rem; }
+    .login-input {
+      width: 100%; padding: .85rem 1rem; border: 1.5px solid #D4CCB8; border-radius: 10px;
+      font-family: inherit; font-size: 1rem; color: #1C1C1C; background: #FAF7F0;
+      margin-bottom: .75rem; transition: border-color .2s;
+    }
+    .login-input:focus { outline: none; border-color: #C9A84C; }
+    .login-btn {
+      width: 100%; padding: .9rem; background: #C9A84C; color: #1C1C1C; border: none;
+      border-radius: 10px; font-family: 'Cabinet Grotesk', sans-serif; font-size: 1rem;
+      font-weight: 800; cursor: pointer; transition: background .2s;
+    }
+    .login-btn:hover { background: #b8973b; }
+    .login-err { color: #A13544; font-size: .85rem; margin-top: .5rem; display: none; }
+
+    /* ── Dashboard ──────────────────────────────── */
+    #dashboard { display: none; }
+    .top-bar {
+      background: #1C1C1C; padding: .9rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-bar-brand { color: #C9A84C; font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.1rem; }
+    .top-bar-right { display: flex; gap: 1rem; align-items: center; }
+    .top-bar button {
+      background: rgba(201,168,76,.15); color: #C9A84C; border: 1px solid rgba(201,168,76,.3);
+      border-radius: 8px; padding: .4rem .9rem; font-family: inherit; font-size: .85rem;
+      cursor: pointer; transition: background .2s;
+    }
+    .top-bar button:hover { background: rgba(201,168,76,.3); }
+
+    .dash-body { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+
+    /* KPI strip */
+    .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .kpi {
+      background: #fff; border: 1.5px solid #D4CCB8; border-radius: 16px;
+      padding: 1.5rem; position: relative; overflow: hidden;
+    }
+    .kpi::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #C9A84C; }
+    .kpi-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #9a8e78; margin-bottom: .5rem; }
+    .kpi-value { font-family: 'Cabinet Grotesk', sans-serif; font-size: 2.2rem; font-weight: 900; color: #1C1C1C; line-height: 1; }
+    .kpi-sub { font-size: .8rem; color: #9a8e78; margin-top: .4rem; }
+    .kpi-revenue .kpi-value { color: #437A22; }
+
+    /* Table */
+    .table-card { background: #fff; border: 1.5px solid #D4CCB8; border-radius: 16px; overflow: hidden; }
+    .table-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid #EDE8DD; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+    .table-header h2 { font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.1rem; font-weight: 800; }
+    .table-filters { display: flex; gap: .5rem; }
+    .filter-btn { padding: .35rem .85rem; border-radius: 99px; border: 1.5px solid #D4CCB8; background: transparent; color: #5a5040; font-size: .8rem; font-family: inherit; cursor: pointer; transition: all .2s; font-weight: 600; }
+    .filter-btn.active, .filter-btn:hover { background: #C9A84C; color: #1C1C1C; border-color: #C9A84C; }
+
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #9a8e78; padding: .75rem 1.5rem; background: #FAF7F0; border-bottom: 1px solid #EDE8DD; }
+    td { padding: .9rem 1.5rem; border-bottom: 1px solid #F0EBE0; font-size: .9rem; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #FAF7F0; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      padding: .2rem .65rem; border-radius: 99px; font-size: .75rem; font-weight: 700;
+    }
+    .badge-sale { background: rgba(67,122,34,.1); color: #437A22; }
+    .badge-download { background: rgba(201,168,76,.12); color: #8a6f3a; }
+
+    .empty-state { text-align: center; padding: 4rem 2rem; color: #9a8e78; }
+    .empty-state .big { font-size: 3rem; margin-bottom: 1rem; }
+    .empty-state h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; color: #5a5040; }
+
+    .sheet-banner {
+      background: #1C1C1C; border-radius: 12px; padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .sheet-banner p { color: #b8a98a; font-size: .88rem; flex: 1; line-height: 1.5; }
+    .sheet-banner a {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: #C9A84C; color: #1C1C1C; font-weight: 800; font-size: .85rem;
+      padding: .6rem 1.25rem; border-radius: 8px; text-decoration: none; white-space: nowrap;
+      transition: background .2s;
+    }
+    .sheet-banner a:hover { background: #b8973b; }
+
+    .refresh-row { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+    .refresh-btn {
+      display: flex; align-items: center; gap: .4rem;
+      padding: .5rem 1rem; border: 1.5px solid #D4CCB8; border-radius: 8px;
+      background: #fff; color: #5a5040; font-family: inherit; font-size: .85rem;
+      cursor: pointer; transition: all .2s; font-weight: 600;
+    }
+    .refresh-btn:hover { border-color: #C9A84C; color: #C9A84C; }
+    .spin { animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 640px) {
+      .dash-body { padding: 1rem; }
+      th, td { padding: .65rem 1rem; }
+      .kpi-value { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ LOGIN GATE ══════════════════════════════════════════ -->
+  <div id="login-gate">
+    <div class="login-card">
+      <div style="font-size:2rem;margin-bottom:.75rem">📊</div>
+      <h1>Sales Dashboard</h1>
+      <p>StackedDaily — Owner access only</p>
+      <input type="password" id="pin-input" class="login-input" placeholder="Enter your PIN" autocomplete="off" />
+      <button class="login-btn" onclick="tryLogin()">Unlock Dashboard →</button>
+      <p class="login-err" id="login-err">Wrong PIN. Try again.</p>
+    </div>
+  </div>
+
+  <!-- ══ DASHBOARD ═══════════════════════════════════════════ -->
+  <div id="dashboard">
+    <div class="top-bar">
+      <span class="top-bar-brand">📊 StackedDaily Sales</span>
+      <div class="top-bar-right">
+        <span id="last-updated" style="color:#9a8e78;font-size:.8rem"></span>
+        <button onclick="logout()">Lock</button>
+      </div>
+    </div>
+
+    <div class="dash-body">
+
+      <!-- Google Sheet banner (shown until sheet URL is configured) -->
+      <div class="sheet-banner" id="sheet-banner">
+        <p>📋 <strong>Step 2:</strong> Paste your Google Apps Script URL in the Vercel environment variable <code style="background:rgba(255,255,255,.1);padding:.1rem .35rem;border-radius:4px">GOOGLE_SHEET_URL</code> to start logging sales automatically. Every sale and download will appear here in real time.</p>
+        <a href="https://script.google.com/home" target="_blank" rel="noopener">Open Apps Script →</a>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-row" id="kpi-row">
+        <div class="kpi kpi-revenue">
+          <div class="kpi-label">Total Revenue</div>
+          <div class="kpi-value" id="kpi-revenue">$0</div>
+          <div class="kpi-sub">All time</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Sales</div>
+          <div class="kpi-value" id="kpi-sales">0</div>
+          <div class="kpi-sub">Completed orders</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">Downloads</div>
+          <div class="kpi-value" id="kpi-downloads">0</div>
+          <div class="kpi-sub">Files delivered</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">This Month</div>
+          <div class="kpi-value" id="kpi-month">$0</div>
+          <div class="kpi-sub" id="kpi-month-label"></div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="refresh-row">
+        <button class="refresh-btn" onclick="loadEvents(true)" id="refresh-btn">
+          <svg id="refresh-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          Refresh
+        </button>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <h2>Activity Log</h2>
+          <div class="table-filters">
+            <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">All</button>
+            <button class="filter-btn" data-filter="sale" onclick="setFilter('sale',this)">Sales</button>
+            <button class="filter-btn" data-filter="download" onclick="setFilter('download',this)">Downloads</button>
+          </div>
+        </div>
+        <div id="table-wrap">
+          <div class="empty-state">
+            <div class="big">💳</div>
+            <h3>No events yet</h3>
+            <p>Sales and downloads will appear here automatically once the Google Sheet is connected.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ── PIN ──────────────────────────────────────────────────────
+    // Change this to any PIN you want (min 6 characters)
+    const PIN = 'stacked2026';
+    const SESSION_KEY = 'sd_admin_auth';
+
+    function tryLogin() {
+      const val = document.getElementById('pin-input').value;
+      if (val === PIN) {
+        sessionStorage.setItem(SESSION_KEY, '1');
+        showDashboard();
+      } else {
+        document.getElementById('login-err').style.display = 'block';
+        document.getElementById('pin-input').value = '';
+        document.getElementById('pin-input').focus();
+      }
+    }
+    document.getElementById('pin-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') tryLogin();
+    });
+    function logout() {
+      sessionStorage.removeItem(SESSION_KEY);
+      location.reload();
+    }
+    if (sessionStorage.getItem(SESSION_KEY)) showDashboard();
+
+    function showDashboard() {
+      document.getElementById('login-gate').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadEvents(false);
+    }
+
+    // ── Data ─────────────────────────────────────────────────────
+    let allEvents = JSON.parse(localStorage.getItem('sd_events') || '[]');
+    let activeFilter = 'all';
+
+    async function loadEvents(showSpin) {
+      if (showSpin) {
+        const icon = document.getElementById('refresh-icon');
+        icon.classList.add('spin');
+        setTimeout(() => icon.classList.remove('spin'), 1000);
+      }
+
+      try {
+        const r = await fetch('/api/events');
+        if (r.ok) {
+          const data = await r.json();
+          if (Array.isArray(data.events)) {
+            allEvents = data.events;
+            localStorage.setItem('sd_events', JSON.stringify(allEvents));
+          }
+        }
+      } catch(e) { /* offline — use cached */ }
+
+      renderKPIs();
+      renderTable();
+      document.getElementById('last-updated').textContent =
+        'Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    }
+
+    function renderKPIs() {
+      const sales = allEvents.filter(e => e.type === 'sale');
+      const downloads = allEvents.filter(e => e.type === 'download');
+      const revenue = sales.reduce((s, e) => s + (Number(e.price) || 0), 0);
+
+      const now = new Date();
+      const monthSales = sales.filter(e => {
+        const d = new Date(e.serverTime || e.clientTime);
+        return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+      });
+      const monthRevenue = monthSales.reduce((s, e) => s + (Number(e.price) || 0), 0);
+
+      document.getElementById('kpi-revenue').textContent = '$' + revenue.toFixed(2);
+      document.getElementById('kpi-sales').textContent = sales.length;
+      document.getElementById('kpi-downloads').textContent = downloads.length;
+      document.getElementById('kpi-month').textContent = '$' + monthRevenue.toFixed(2);
+      document.getElementById('kpi-month-label').textContent =
+        now.toLocaleString('default', {month:'long'}) + ' ' + now.getFullYear();
+    }
+
+    function setFilter(f, btn) {
+      activeFilter = f;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderTable();
+    }
+
+    function renderTable() {
+      const filtered = activeFilter === 'all'
+        ? allEvents
+        : allEvents.filter(e => e.type === activeFilter);
+
+      const sorted = [...filtered].reverse(); // newest first
+      const wrap = document.getElementById('table-wrap');
+
+      if (!sorted.length) {
+        wrap.innerHTML = `<div class="empty-state">
+          <div class="big">${activeFilter === 'sale' ? '💳' : activeFilter === 'download' ? '📥' : '📋'}</div>
+          <h3>No ${activeFilter === 'all' ? '' : activeFilter + ' '}events yet</h3>
+          <p>They'll appear here automatically after your first sale or download.</p>
+        </div>`;
+        return;
+      }
+
+      const rows = sorted.map(e => {
+        const date = new Date(e.serverTime || e.clientTime);
+        const dateStr = date.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+        const timeStr = date.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+        const badge = e.type === 'sale'
+          ? '<span class="badge badge-sale">💳 Sale</span>'
+          : '<span class="badge badge-download">📥 Download</span>';
+        const amount = e.price ? '<strong style="color:#437A22">+$' + Number(e.price).toFixed(2) + '</strong>' : '—';
+        return `<tr>
+          <td>${badge}</td>
+          <td>${e.product || '—'}</td>
+          <td>${amount}</td>
+          <td>${e.customerName || '—'}</td>
+          <td style="color:#9a8e78;font-size:.82rem">${dateStr}<br>${timeStr}</td>
+        </tr>`;
+      }).join('');
+
+      wrap.innerHTML = `<table>
+        <thead><tr>
+          <th>Type</th><th>Product</th><th>Amount</th><th>Customer</th><th>Date</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+    }
+
+    // Auto-refresh every 2 minutes
+    setInterval(() => { if (sessionStorage.getItem(SESSION_KEY)) loadEvents(false); }, 120000);
+  </script>
+</body>
+</html>
